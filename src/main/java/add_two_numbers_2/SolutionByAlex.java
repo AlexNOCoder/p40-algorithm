@@ -1,4 +1,7 @@
 package add_two_numbers_2;
+
+import common.ListNode;
+
 public class SolutionByAlex {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
