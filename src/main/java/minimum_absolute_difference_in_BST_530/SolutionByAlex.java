@@ -7,17 +7,7 @@ import java.util.List;
 import java.util.Stack;
 //时间复杂度和空间复杂度爆炸
 public class SolutionByAlex {
-    public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(2);
-        root.left.left = new TreeNode(3);
-        root.left.right = new TreeNode(3);
-        root.left.left.left = new TreeNode(4);
-        root.left.left.right = new TreeNode(4);
-        getMinimumDifference(root);
 
-    }
     public static int getMinimumDifference(TreeNode root) {
         int result = Integer.MAX_VALUE;
         List<Integer> allNode = new ArrayList<>();
