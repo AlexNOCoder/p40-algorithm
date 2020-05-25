@@ -12,9 +12,8 @@ public class SolutionByAlex {
     }
 
 
-
+    //每一个状态的前面会有八种情况
     public static int openLock(String[] deadends, String target) {
-
         List<String> dead = Arrays.asList(deadends);
         if(dead.contains("0000")){
             return -1;
