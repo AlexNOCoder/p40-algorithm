@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class SolutionByAlex {
-
+    //BFS解法
     public int numSquares(int n) {
         List<Integer> list = new ArrayList();
         for(int i=1;i*i <=n;i++){
