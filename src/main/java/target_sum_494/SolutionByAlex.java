@@ -19,7 +19,7 @@ public class SolutionByAlex {
         BFS(nums, s, temp + nums[number], number + 1);
         BFS(nums, s, temp - nums[number], number + 1);
     }
-
+    
 }
 
 
