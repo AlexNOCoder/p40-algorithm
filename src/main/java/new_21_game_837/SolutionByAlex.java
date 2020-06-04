@@ -22,21 +22,18 @@ public class SolutionByAlex {
             //eg. i=7
             if(i <=K && i<= W){
                 p[i] = sum[i-1]/W;
-
             }
 
             //i <= k && i > w : p[i] = (sum[i-1] - sum[i-w-1])/w
             //eg. i = 13
             if(i <=K && i > W){
                 p[i] = (sum[i-1] - sum[i-W-1])/W;
-
             }
 
             //i > k && i <= w : p[i] = (sum[i-1] - sum[i-w-1])/w
-            //eg. i = 13
+            //eg. N = 6 K=1 W =10  p[i]均为1/w
             if(i > K && i <= W){
                 p[i] = sum[K-1]/W;
-
             }
 
             //i > k && i > w : p[i] = (sum[K-1] - sum[i-W-1])/w
@@ -47,6 +44,7 @@ public class SolutionByAlex {
             sum[i]= sum[i-1]+p[i];
 
          }
+        //总共【k-1,k+w-1】,不越界范围[k-1,N]
         return (sum[N] - sum[K-1])/(sum[K+W-1] - sum[K-1]);
     }
 }
