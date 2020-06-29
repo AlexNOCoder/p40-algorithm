@@ -2,7 +2,6 @@ package search_insert_position_35;
 
 public class SolutionByAlex {
 
-
     public static int searchInsert(int[] nums, int target) {
         int result = binarySearch(nums,0,nums.length -1,target);
         if(result != -1){
@@ -42,7 +41,7 @@ public class SolutionByAlex {
         }
     }
 
-    public static   int findTheNearLessNum(int[] nums,int target){
+    public static  int findTheNearLessNum(int[] nums,int target){
         //不在数组中，找到插入位置
         if(nums[0] > target){
             return 0;
