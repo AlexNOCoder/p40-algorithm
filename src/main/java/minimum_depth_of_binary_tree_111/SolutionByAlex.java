@@ -8,19 +8,15 @@ public class SolutionByAlex {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.right.right = new TreeNode(5);
-
+        root.left.left = new TreeNode(3);
+        root.left.left.left = new TreeNode(4);
+        root.left.left.left.left = new TreeNode(5);
         System.out.println(minDepth(root));
     }
 
     public static int minDepth(TreeNode root) {
         if(root == null){
             return 0;
-        }
-        if(root.right == null || root.left == null){
-            return 1;
         }
         Queue<TreeNode> queue = new LinkedList();
         queue.offer(root);
@@ -33,7 +29,13 @@ public class SolutionByAlex {
                 if(node.left == null && node.right == null){
                     return path;
                 }
-                queue.offer(node);
+                if(node.left != null){
+                    queue.offer(node.left);
+                }
+                if(node.right != null){
+                    queue.offer(node.right);
+                }
+
             }
         }
         return path;
