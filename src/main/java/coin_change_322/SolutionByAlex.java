@@ -19,7 +19,7 @@ public class SolutionByAlex {
             dp[i] = Integer.MAX_VALUE;
             //转移方程
             for(int coin:coins){
-                if(i >= coin){
+                if(i >= coin && dp[i-coin] != Integer.MAX_VALUE){
                     dp[i] = Math.min(dp[i-coin]+1,dp[i]);
                 }
             }
