@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class SolutionByAlex {
 
-
+    //BFS
     public static void main(String[] args) {
         int[][] test ={{0},{0},{1},{1},{1},{1},{1},{1}};
         updateMatrix(test);
