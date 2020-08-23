@@ -62,6 +62,7 @@ public class SolutionByAlex {
                 stack.pop();
                 index++;
                 if(stack.isEmpty() && index < inputChars.length){
+                    //注意此处的细节，当栈空时，应当加入一个元素，让循环不结束，这个时候还得注意是否到了inputChars的尾部
                     stack.push(inputChars[index]);
                     index++;
                 }
