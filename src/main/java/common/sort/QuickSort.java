@@ -1,4 +1,4 @@
-package sort;
+package common.sort;
 public class QuickSort {
     //快排
     private static void quickSort(int[] num, int left, int right) {

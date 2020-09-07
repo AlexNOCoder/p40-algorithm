@@ -1,4 +1,4 @@
-package sort;
+package common.sort;
 public class InsertSort {
     public static int[] inserSort(int[] arry){
         if(arry.length == 0){

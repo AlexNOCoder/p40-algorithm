@@ -1,4 +1,4 @@
-package search;
+package common.search;
 /**
    * @author luoyuntian
    * @date 2020-08-22 17:17

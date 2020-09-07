@@ -1,4 +1,4 @@
-package sort;
+package common.sort;
 /**
    * @author luoyuntian
    * @date 2020-08-22 17:25

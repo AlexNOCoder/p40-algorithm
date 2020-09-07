@@ -1,4 +1,4 @@
-package sort;
+package common.sort;
 public class SelectSort {
     public static int[] selectSort(int[] array){
         if(array.length ==0){
