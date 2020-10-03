@@ -7,6 +7,12 @@ import java.util.Map;
 
 public class SolutionByAlex {
 
+    /**
+       * @author luoyuntian
+       * @date 2020-10-03 16:49
+       * @description 先排序，再根据宽和高分别进行LIS
+       * @return
+       */
     public static int maxEnvelopes(int[][] envelopes) {
         //dp[i]表示在[0..i]信封中最多的嵌套个数
         //situation[i][2]表示第i个位置中，最多嵌套个数的时候，位于首位和尾部的宽高，
