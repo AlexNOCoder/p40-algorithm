@@ -26,10 +26,10 @@ public class SolutionByAlex {
                 //需要包含本节点，则只看比本节点小的dp[j]
                if(nums[i] >  nums[j]){
                    if(tempMax == dp[j]){
-                       //如果此时的最大值和当前的dp[j]相同，则表示能达到此值的可能性+1
+                       //如果此时的最大值和当前的dp[j]相同，可能性就加上result[j]的可能性
                        result[i] += result[j];
                    }else if(tempMax < dp[j]){
-                       //如果当前值大于此时的最大值，则重新赋值最大值，并把result的计数置为1
+                       //如果当前值大于此时的最大值，则重新赋值最大值，并把result的计数置为result[j]
                        result[i] = result[j];
                    }
                    //根据现有的值是否大于最大值来更新最大值
