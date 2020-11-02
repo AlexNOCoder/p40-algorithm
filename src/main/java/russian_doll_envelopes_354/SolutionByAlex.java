@@ -12,15 +12,18 @@ public class SolutionByAlex {
        */
 
     public static int maxEnvelopes(int[][] envelopes){
+        if(envelopes.length < 2){
+           return envelopes.length;
+        }
         Arrays.sort(envelopes, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
                 //宽度排序
-                if(o1[0] < o2[0]){
+                if(o1[0] > o2[0] || (o1[0] == o2[0] && o1[1] > o2[1])){
                     return 1;
-                }else if(o1[0] > o2[0]){
+                }else if(o1[0] < o2[0] || (o1[0] == o2[0] && o1[1] < o2[1])){
                     return -1;
-                }else {
+                }else{
                     return 0;
                 }
             }
@@ -30,15 +33,31 @@ public class SolutionByAlex {
         int[] dp = new int[envelopes.length];
         //初始化dp，dp[i]表示包含i位置信封时，最多能嵌套几层
         //对于第一个信封，不用嵌套，dp[0]=1
-        dp[0] = 1;
-        for(int i=0;i<envelopes.length;i++){
+        for(int index=0;index<envelopes.length;index++){
+            dp[index] = 1;
+        }
+        for(int i=1;i<envelopes.length;i++){
             //判断当前状态是只和当前位置的前面有关
             //还是当前状态是与前面所有位置均有关
-            //由于此题信封嵌套，只需要考虑前面的位置
-        }
+            //由于此题信封嵌套，前面所有位置均有关
+            for(int j=0;j<i;j++){
+                if(envelopes[i][0] > envelopes[j][0] && envelopes[i][1] > envelopes[j][1]){
+                    //如果长宽均满足，则+1
+                    dp[i] = Math.max(dp[i],dp[j]+1);
+                }
+            }
 
-        return 1;
+        }
+        int max = dp[0];
+        for(int i: dp){
+            if(max < i){
+             max =i;
+            }
+        }
+        return max;
     }
+
+
 
 
 
@@ -136,7 +155,12 @@ public class SolutionByAlex {
 //    }
 
     public static void main(String[] args) {
-        int[][] envelopes = {{5,4},{6,4},{6,7},{2,3}};
-//        System.out.println(maxEnvelopes(envelopes));
+//        int[][] envelopes = {{2,100},{3,200},{4,300},{5,500},{5,400},{5,250},{6,360},{7,380}};
+//        int[][] envelopes = {{5,4},{6,4},{6,7},{2,3}};
+//        int[][] envelopes = {{1,3},{3,5},{6,7},{6,8},{8,4},{9,5}};
+        //[[46,89],[50,53],[52,68],[72,45],[77,81]]
+        int[][] envelopes = {{46,89},{50,53},{52,68},{72,45},{77,81}};
+        System.out.println(maxEnvelopes(envelopes));
+
     }
 }
