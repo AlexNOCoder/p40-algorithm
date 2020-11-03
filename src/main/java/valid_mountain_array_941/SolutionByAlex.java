@@ -2,6 +2,7 @@ package valid_mountain_array_941;
 
 public class SolutionByAlex {
     public static boolean validMountainArray(int[] A) {
+        //前后指针，前面指针递增，后面指针递减，最后比较是否相遇
         if(A.length < 3){
            return false ;
         }
