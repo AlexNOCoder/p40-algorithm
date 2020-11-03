@@ -18,7 +18,7 @@ public class SolutionByAlex {
         Arrays.sort(envelopes, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                //宽度排序
+                //宽度排序,如果宽度相同，则比较长度
                 if(o1[0] > o2[0] || (o1[0] == o2[0] && o1[1] > o2[1])){
                     return 1;
                 }else if(o1[0] < o2[0] || (o1[0] == o2[0] && o1[1] < o2[1])){
