@@ -30,10 +30,10 @@ public class JumpGame {
 
     //顺序寻址与随机寻址比较
     public static void main(String[] args) {
-        int[][] testArr = new int[10000][10000];
+        int[][] testArr = new int[20000][20000];
         long start1 = System.currentTimeMillis();
-        for(int i=0;i<10000;i++){
-            for(int j=0;j<10000;j++){
+        for(int i=0;i<20000;i++){
+            for(int j=0;j<20000;j++){
                 //顺序
                 testArr[i][j] =0;
             }
@@ -42,8 +42,8 @@ public class JumpGame {
 
         System.out.println("顺序访问耗时： "+(end1-start1)+"ms");
         long start2 = System.currentTimeMillis();
-        for(int i=0;i<10000;i++){
-            for(int j=0;j<10000;j++){
+        for(int i=0;i<20000;i++){
+            for(int j=0;j<20000;j++){
                 //随机
                 testArr[j][i] =0;
             }
