@@ -1,6 +1,6 @@
 package common.dp;
 public class JumpGame {
-    //可使用贪心，时间复杂度更低
+    //可使用贪心，时间复杂度更低O(N),使用每次跳最远的贪心策略
     public static boolean jumpGame(int[] A){
         int n = A.length;
         //0到n-1块石头
