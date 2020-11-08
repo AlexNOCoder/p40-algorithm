@@ -28,7 +28,7 @@ public class JumpGame {
         return f[n -1];
     }
 
-    //测试是否数组寻址
+    //顺序寻址与随机寻址比较
     public static void main(String[] args) {
         int[][] testArr = new int[10000][10000];
         long start1 = System.currentTimeMillis();
