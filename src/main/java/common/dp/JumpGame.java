@@ -1,5 +1,6 @@
 package common.dp;
 public class JumpGame {
+    //可使用贪心，时间复杂度更低
     public static boolean jumpGame(int[] A){
         int n = A.length;
         //0到n-1块石头
