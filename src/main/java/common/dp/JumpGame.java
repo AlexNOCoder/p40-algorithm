@@ -34,6 +34,7 @@ public class JumpGame {
         long start1 = System.currentTimeMillis();
         for(int i=0;i<10000;i++){
             for(int j=0;j<10000;j++){
+                //顺序
                 testArr[i][j] =0;
             }
         }
@@ -43,6 +44,7 @@ public class JumpGame {
         long start2 = System.currentTimeMillis();
         for(int i=0;i<10000;i++){
             for(int j=0;j<10000;j++){
+                //随机
                 testArr[j][i] =0;
             }
         }
