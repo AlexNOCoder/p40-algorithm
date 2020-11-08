@@ -1,8 +1,8 @@
 package common.dp;
 public class JumpGame {
     //可使用贪心，时间复杂度更低O(N),使用每次跳最远的贪心策略
-    public static boolean jumpGame(int[] A){
-        int n = A.length;
+    public static boolean jumpGame(int[] nums){
+        int n = nums.length;
         //0到n-1块石头
         boolean[] f = new boolean[n];
         //初始化
@@ -16,7 +16,7 @@ public class JumpGame {
             //最后一条是从 j 到 i
             for(int j=0;j < i;++j){
                 //条件： j可达，并且j可以跳到i
-                if(f[j] && j + A[j] >= i){
+                if(f[j] && j + nums[j] >= i){
                     //状态转移
                     f[i] = true;
                     break;
