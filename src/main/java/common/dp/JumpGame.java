@@ -27,4 +27,27 @@ public class JumpGame {
         //结果为f[n-1]
         return f[n -1];
     }
+
+    //测试是否数组寻址
+    public static void main(String[] args) {
+        int[][] testArr = new int[10000][10000];
+        long start1 = System.currentTimeMillis();
+        for(int i=0;i<10000;i++){
+            for(int j=0;j<10000;j++){
+                testArr[i][j] =0;
+            }
+        }
+        long end1 = System.currentTimeMillis();
+
+        System.out.println("顺序访问耗时： "+(end1-start1));
+        long start2 = System.currentTimeMillis();
+        for(int i=0;i<10000;i++){
+            for(int j=0;j<10000;j++){
+                testArr[j][i] =0;
+            }
+        }
+        long end2 = System.currentTimeMillis();
+        System.out.println("非顺序访问耗时： "+(end2-start2));
+
+    }
 }
