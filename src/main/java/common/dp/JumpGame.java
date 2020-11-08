@@ -39,7 +39,7 @@ public class JumpGame {
         }
         long end1 = System.currentTimeMillis();
 
-        System.out.println("顺序访问耗时： "+(end1-start1));
+        System.out.println("顺序访问耗时： "+(end1-start1)+"ms");
         long start2 = System.currentTimeMillis();
         for(int i=0;i<10000;i++){
             for(int j=0;j<10000;j++){
@@ -47,7 +47,7 @@ public class JumpGame {
             }
         }
         long end2 = System.currentTimeMillis();
-        System.out.println("非顺序访问耗时： "+(end2-start2));
+        System.out.println("非顺序访问耗时： "+(end2-start2)+"ms");
 
     }
 }
