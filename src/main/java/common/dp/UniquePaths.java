@@ -20,7 +20,7 @@ public class UniquePaths {
 
         return f[m-1][n-1];
     }
-
+    //局部性原理
     //利用cpu L1 cache提升程序速度，linux cache Line 通常64byte,可以缓存int型16个
     //从L1 cache读取速度2~4个时钟周期，从内存读取200~300个时钟周期
     public static void main(String[] args) {
