@@ -20,4 +20,29 @@ public class UniquePaths {
 
         return f[m-1][n-1];
     }
+
+    //顺序寻址与随机寻址比较
+    public static void main(String[] args) {
+        int[][] testArr = new int[20000][20000];
+        long start1 = System.currentTimeMillis();
+        for(int i=0;i<20000;i++){
+            for(int j=0;j<20000;j++){
+                //顺序
+                testArr[i][j] =0;
+            }
+        }
+        long end1 = System.currentTimeMillis();
+
+        System.out.println("顺序访问耗时： "+(end1-start1)+"ms");
+        long start2 = System.currentTimeMillis();
+        for(int i=0;i<20000;i++){
+            for(int j=0;j<20000;j++){
+                //随机
+                testArr[j][i] =0;
+            }
+        }
+        long end2 = System.currentTimeMillis();
+        System.out.println("非顺序访问耗时： "+(end2-start2)+"ms");
+
+    }
 }
