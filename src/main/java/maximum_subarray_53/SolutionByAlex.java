@@ -12,12 +12,12 @@ public class SolutionByAlex {
         int[] dp = new int[n];
         dp[0] = nums[0];
         int max = dp[0];
-        for(int i=1;i<n;i++){
-            dp[i] = nums[i] + Math.max(dp[i-1],0);
-            if(max < dp[i]){
-                max = dp[i];
-            }
-        }
+//        for(int i=1;i<n;i++){
+//            dp[i] = nums[i] + Math.max(dp[i-1],0);
+//            if(max < dp[i]){
+//                max = dp[i];
+//            }
+//        }
         return max;
     }
 
