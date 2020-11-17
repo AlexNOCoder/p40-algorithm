@@ -6,24 +6,23 @@ public class LongestIncreasingSubsequence {
         if(n <1){
             return 0;
         }
+        //开辟数组
         int[] dp = new int[n];
+        //初始化
         dp[0] = 1;
-        int max =0;
-        for(int i=1;i<nums.length;i++){
-            int preMax = 0;
-            for(int j=0;j<i;j++){
-                if(nums[j] < nums[i] && preMax < dp[j]){
-                    preMax = dp[j];
+        //初始化结果，最大值为dp[0]
+        int max =dp[0];
+        //从小到大遍历
+        for(int i=1 ;i<nums.length; i++){
+            //初始化最大值
+            dp[i] =1;
+            for(int j=0 ; j<i ;j++){
+                if(nums[j] < nums[i]){
+                    dp[i] = Math.max(dp[i],dp[j]+1);
                 }
             }
-            dp[i] = preMax +1;
+            max = Math.max(max,dp[i]);
         }
-
-        for(int k=0;k<n;k++){
-            if(max < dp[k]){
-                max = dp[k];
-            }
-        }
-        return Math.max(dp[n-1],max);
+        return max;
     }
 }
