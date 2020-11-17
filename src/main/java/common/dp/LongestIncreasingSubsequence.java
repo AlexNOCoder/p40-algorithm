@@ -3,24 +3,27 @@ public class LongestIncreasingSubsequence {
 
     public static int longestIncreasingSubsequence(int[] nums){
         int n = nums.length;
-        //开辟空间
-        int[] f = new int[n];
-
-        //初始化
-        f[0] =1;
-
-        int maxans = f[0];
-        for(int i=1;i<n;i++){
-            //因为后面是max，先设置为1
-            f[i] =1;
+        if(n <1){
+            return 0;
+        }
+        int[] dp = new int[n];
+        dp[0] = 1;
+        int max =0;
+        for(int i=1;i<nums.length;i++){
+            int preMax = 0;
             for(int j=0;j<i;j++){
-                if(nums[i] > nums[j]){
-                    f[i] = Math.max(f[i],f[j]+1);
+                if(nums[j] < nums[i] && preMax < dp[j]){
+                    preMax = dp[j];
                 }
             }
-            maxans =Math.max(maxans,f[i]);
+            dp[i] = preMax +1;
         }
 
-        return maxans;
+        for(int k=0;k<n;k++){
+            if(max < dp[k]){
+                max = dp[k];
+            }
+        }
+        return Math.max(dp[n-1],max);
     }
 }
