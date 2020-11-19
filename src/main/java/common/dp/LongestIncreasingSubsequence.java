@@ -3,6 +3,7 @@ public class LongestIncreasingSubsequence {
 
     public static int longestIncreasingSubsequence(int[] nums){
         int n = nums.length;
+        //case input为空数组情况
         if(n <1){
             return 0;
         }
