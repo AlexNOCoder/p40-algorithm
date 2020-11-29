@@ -7,7 +7,7 @@ public class SolutionByAlex {
     public static int largestPerimeter(int[] A) {
         Arrays.sort(A);
         int size = A.length;
-        if(size <3 ){
+        if(size < 3 ){
             return 0;
         }
         //最大值肯定是三条边长度都是最大的，
