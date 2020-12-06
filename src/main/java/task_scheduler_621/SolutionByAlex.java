@@ -4,11 +4,63 @@ import java.util.*;
 
 public class SolutionByAlex {
     public static int leastInterval(char[] tasks, int n) {
+        int size = tasks.length;
+        //记录每次选择的任务
+        List<Character> choosed = new ArrayList<>();
+        //任务与任务出现次数集合
+        Map<Character,Integer> charTimes = new HashMap<>();
+        for(int i = 0;i < size;i++){
+            if(charTimes.containsKey(tasks[i])){
+                int tempTimes = charTimes.get(tasks[i]);
+                charTimes.put(tasks[i],tempTimes+1);
+            }else {
+                charTimes.put(tasks[i],1);
+            }
+        }
+        int coust =0;
+        //从小到大更新f[]
+        for(int k=0;k<size;k++){
+            char temp = '$';
+            int tempMinCost = Integer.MAX_VALUE;
+            int tempDelay = 0;
+            for(Character c:charTimes.keySet()){
+                int lastIndex = choosed.lastIndexOf(c);
+                int tmepCost = 0;
+                int sleep = 0;
+                //计算此次选择耗时
+                if(lastIndex < 0 || k -lastIndex -n > 1){
+                    System.out.println(c+" :不需要delay,lastindex: "+lastIndex+" ;i: "+k);
+                    tmepCost = 1;
+                }else {
+                    sleep = lastIndex + n - k + 1;
+                    System.out.println(c+" :需要delay： "+sleep+",lastIndex: "+lastIndex+" ;i: "+k);
+                    tmepCost = sleep+1;
+                }
 
-        /**
-           * 对于本题，需要得到最优的子问题：需要尽量的少待命
-         * 是否是贪心问题？通过选择最远的节点来找到最优子问题，并不是贪心，而是依赖n个子问题的动态规划
-           */
+                if(tmepCost < tempMinCost){
+                    tempMinCost = tmepCost;
+                    temp = c;
+                    tempDelay = sleep;
+                }
+            }
+            for(int j=0;j<tempDelay;){
+                tempDelay--;
+                choosed.add('%');
+            }
+            choosed.add(temp);
+            pirntArr(choosed);
+            System.out.println("choosed: " +temp +" tempMinCost: "+tempMinCost);
+            int nowTimes = charTimes.get(temp) -1;
+            if(nowTimes <1){
+                charTimes.remove(temp);
+            }else {
+                charTimes.put(temp,nowTimes);
+            }
+            System.out.println("===================");
+        }
+        System.out.println();
+        return choosed.size();
+
         //尝试贪心
 //        //任务与任务出现次数集合
 //        Map<Character,Integer> charTimes = new HashMap<>();
@@ -77,19 +129,28 @@ public class SolutionByAlex {
 //        }
 //        return coust;
 
-        return 0;
+
     }
 
     public static void main(String[] args) {
-        char[] test1 = {'A','A','A','A','A','A','B','C','D','E','F','G'};
+//        char[] test1 = {'A','A','A','A','A','A','B','C','D','E','F','G'};
 //
 //
 //        leastInterval(test1,2);
-//        char[] test1 = {'A','A','A','B','B','B'};
+        char[] test1 = {'A','A','A','B','B','B'};
 
 
         System.out.println(leastInterval(test1,2));
     }
+
+    public static void pirntArr(List<Character> cList){
+        StringBuilder s = new StringBuilder();
+        for(Character c:cList){
+            s.append(c);
+            s.append(" ");
+        }
+    }
+
 }
 
 
