@@ -61,8 +61,8 @@ public class SolutionByAlex {
         System.out.println();
         return choosed.size();
 
-        //尝试贪心
-//        //任务与任务出现次数集合
+//        尝试贪心，最远距离，最多次数
+        //任务与任务出现次数集合
 //        Map<Character,Integer> charTimes = new HashMap<>();
 //        int size = tasks.length;
 //        for(int i = 0;i < size;i++){
@@ -76,26 +76,33 @@ public class SolutionByAlex {
 //
 //        class TaskInfo{
 //            char task;
-//            int index;
+//            int indexOutBound;
 //            int times;
 //
-//            public TaskInfo(char task,int index,int times){
-//                this.index = index;
+//            public TaskInfo(char task,int indexOutBound,int times){
+//                this.indexOutBound = indexOutBound;
 //                this.task = task;
 //                this.times = times;
 //            }
 //
 //        }
-//        //使用小根堆，每次拿出index最小一个，然后再index+1，然后插入
-//        PriorityQueue<TaskInfo> priorityQueue = new PriorityQueue<>(new Comparator<TaskInfo>() {
+//
+//        Comparator<TaskInfo> comparator = new Comparator<TaskInfo>() {
 //            @Override
 //            public int compare(TaskInfo o1, TaskInfo o2) {
-//                return o1.index - o2.index;
+//
+//                if (o1.indexOutBound != o2.indexOutBound) {
+//                    return o1.indexOutBound - o2.indexOutBound;
+//                } else {
+//                    return o2.times - o1.times;
+//                }
+//
 //            }
-//        });
+//        };
+
 //        Set<Map.Entry<Character, Integer>> entries = charTimes.entrySet();
 //        for(Map.Entry<Character, Integer> en:entries){
-//            priorityQueue.offer(new TaskInfo(en.getKey(),-1,en.getValue()));
+//            priorityQueue.offer(new TaskInfo(en.getKey(),0,en.getValue()));
 //        }
 //        List<Character> result = new ArrayList<>();
 //        int index =0;
@@ -117,9 +124,12 @@ public class SolutionByAlex {
 //                    index++;
 //                }
 //            }
-//
 //            result.add(temp.task);
-//            temp.index = index;
+//            if(index - lastIndex > n ){
+//                temp.indexOutBound = 0;
+//            }else {
+//                temp.indexOutBound = 1;
+//            }
 //            temp.times = temp.times -1;
 //            index++;
 //            if(temp.times >0){
@@ -127,17 +137,19 @@ public class SolutionByAlex {
 //            }
 //
 //        }
-//        return coust;
+
+
+//        return 0 ;
 
 
     }
 
     public static void main(String[] args) {
-//        char[] test1 = {'A','A','A','A','A','A','B','C','D','E','F','G'};
+        char[] test1 = {'A','A','A','A','A','A','B','C','D','E','F','G'};
 //
 //
 //        leastInterval(test1,2);
-        char[] test1 = {'A','A','A','B','B','B'};
+//        char[] test1 = {'A','A','A','B','B','B'};
 
 
         System.out.println(leastInterval(test1,2));
