@@ -1,7 +1,7 @@
 package common.utils;
 public class QuickMatrix {
 
-
+    //两个矩阵相乘
     public static int[][] multiply(int [][]a,int[][]b){
         int[][]arr=new int[a.length][b[0].length];
         for(int i=0;i<a.length;i++){
@@ -13,6 +13,8 @@ public class QuickMatrix {
         }
         return arr;
     }
+
+    //矩阵快速幂
     public static int[][] quickMatrix(int[][]a,int n){
         int[][] res=new int[a.length][a[0].length];
         for(int i=0;i<res.length;i++){
