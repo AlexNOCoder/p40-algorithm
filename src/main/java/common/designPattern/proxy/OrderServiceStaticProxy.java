@@ -1,6 +1,5 @@
 package common.designPattern.proxy;
 
-import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
