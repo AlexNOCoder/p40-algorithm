@@ -1,4 +1,4 @@
-package common.strategy.payStrategy;
+package common.designPattern.strategy.payStrategy;
 public class AliPay extends Payment{
 
 

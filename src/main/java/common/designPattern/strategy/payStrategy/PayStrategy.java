@@ -1,4 +1,4 @@
-package common.strategy.payStrategy;
+package common.designPattern.strategy.payStrategy;
 
 import java.util.HashMap;
 import java.util.Map;

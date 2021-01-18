@@ -1,4 +1,4 @@
-package common.strategy;
+package common.designPattern.strategy;
 public class GroupbuyStrategy implements PromotionStrategy{
 
     @Override

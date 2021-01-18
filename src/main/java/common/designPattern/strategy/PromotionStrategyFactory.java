@@ -1,4 +1,4 @@
-package common.strategy;
+package common.designPattern.strategy;
 
 import java.util.HashMap;
 import java.util.Map;

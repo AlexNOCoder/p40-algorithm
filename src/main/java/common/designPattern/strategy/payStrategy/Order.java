@@ -1,4 +1,4 @@
-package common.strategy.payStrategy;
+package common.designPattern.strategy.payStrategy;
 public class Order {
     private String uid;
     private String orderId;

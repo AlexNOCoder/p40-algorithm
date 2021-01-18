@@ -1,4 +1,4 @@
-package common.strategy;
+package common.designPattern.strategy;
 public class PromotionTest {
     public static void main(String[] args) {
         PromotionActivity active618 = new PromotionActivity(new CouponStrategy());

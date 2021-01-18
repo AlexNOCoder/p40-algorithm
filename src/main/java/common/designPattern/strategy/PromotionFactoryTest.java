@@ -1,4 +1,4 @@
-package common.strategy;
+package common.designPattern.strategy;
 public class PromotionFactoryTest {
     public static void main(String[] args) {
         String promotionKey = "GROUPBUY";

@@ -1,4 +1,4 @@
-package common.strategy;
+package common.designPattern.strategy;
 public class PromotionActivity {
     private PromotionStrategy promotionStrategy;
     public PromotionActivity(PromotionStrategy promotionStrategy){
