@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 public class Event {
 
     //监听器的一种包装，标准事件源格式的定义
+    //也可以使用google 的guava api实现观察者模式
 
     private Object source;
 
