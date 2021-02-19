@@ -10,14 +10,25 @@ import java.util.Arrays;
  */
 public class SolutionByAlex {
 
-    public int findShortestSubArray(int[] nums) {
+    public static int findShortestSubArray(int[] nums) {
         Arrays.sort(nums);
-        return 1;
+        int maxLength = 0;
+        for(int i=0,j=0;j< nums.length;){
+            if(nums[j] == nums[i]){
+                j++;
+            }else {
+                maxLength = Math.max(maxLength,j-i);
+                i=j;
+            }
+        }
+        return maxLength;
     }
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 2, 3, 1};
-        System.out.println(Arrays.toString(arr));;
+        Arrays.sort(arr);
+        System.out.println(Arrays.toString(arr));
+        System.out.println(findShortestSubArray(arr));
     }
 }
 
