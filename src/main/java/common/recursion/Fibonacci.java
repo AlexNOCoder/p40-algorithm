@@ -1,9 +1,13 @@
 package common.recursion;
 
+import java.io.Serializable;
+
 /**
  * @description 通过尾递归来优化斐波那契计算
  */
-public class Fibonacci {
+public class Fibonacci implements Serializable {
+
+
 
     //普通递归
     public static long fibonacci(long index){
