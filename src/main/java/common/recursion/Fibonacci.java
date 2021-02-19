@@ -1,0 +1,28 @@
+package common.recursion;
+
+/**
+ * @description 通过尾递归来优化斐波那契计算
+ */
+public class Fibonacci {
+
+    //普通递归
+    public static long fibonacci(long index){
+        if(index <= 1){
+            return index;
+        }else {
+            return fibonacci(index - 1) + fibonacci(index - 2);
+        }
+    }
+
+    //尾递归
+    public static long fibonacciTailRecursion(long index){
+        return fibonacciTailRecursion(index,0,1);
+    }
+    public static long fibonacciTailRecursion(long index,int curr,int next){
+        if(index == 0){
+            return curr;
+        }else {
+            return fibonacciTailRecursion(index -1,next,curr + next);
+        }
+    }
+}

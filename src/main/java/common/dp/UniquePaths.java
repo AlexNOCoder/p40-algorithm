@@ -46,4 +46,14 @@ public class UniquePaths {
         System.out.println("非顺序访问从内存中读取耗时： "+(end2-start2)+"ms");
 
     }
+
+    public int climbStairs(int m,int a,int b) {
+        int[] dp = new int[m + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i = 2; i <= m; i++) {
+            dp[i] = dp[i - a] + dp[i - b];
+        }
+        return dp[m];
+    }
 }
