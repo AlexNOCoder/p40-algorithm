@@ -10,6 +10,7 @@ public class Fibonacci {
         if(index <= 1){
             return index;
         }else {
+            System.out.println("fibonacci"+"("+(index -1)+")"+"+"+"fibonacci"+"("+(index -2)+")");
             return fibonacci(index - 1) + fibonacci(index - 2);
         }
     }
@@ -22,7 +23,14 @@ public class Fibonacci {
         if(index == 0){
             return curr;
         }else {
+            System.out.println("fibonacciTailRecursion("+(index -1)+","+next+","+(curr+next)+")");
             return fibonacciTailRecursion(index -1,next,curr + next);
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("值为："+fibonacci(20));
+        System.out.println("=============");
+        System.out.println("值为："+fibonacciTailRecursion(20));
     }
 }
