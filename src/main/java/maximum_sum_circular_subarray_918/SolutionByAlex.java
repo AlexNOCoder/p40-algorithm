@@ -28,8 +28,6 @@ public class SolutionByAlex {
                 min = Math.min(min,currMin);
             }
             max = Math.max(max,currMax);
-
-
         }
         return Math.max(max,sum-min);
     }
