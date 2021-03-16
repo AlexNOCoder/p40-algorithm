@@ -18,7 +18,7 @@ public class SolutionByAlex {
             curNum++;
             //判断是否转向
             int nexRow = row + diretions[directionIndex][0],nexColumn = column + diretions[directionIndex][1];
-            if(nexRow < 0 || nexRow >=n || nexColumn < 0 || nexColumn >=0 || matrix[nexRow][nexColumn] !=0){
+            if(nexRow < 0 || nexRow >=n || nexColumn < 0 || nexColumn >=n || matrix[nexRow][nexColumn] !=0){
                 directionIndex = (directionIndex +1) % 4;
             }
             //下一个坐标位置
