@@ -5,11 +5,27 @@ public class SolutionByAlex {
     }
 
     public int[][] generateMatrix(int n) {
-        int[][] result = new int[n][];
-        int col1=0,row1=0,col2=n-1,row2=n-1;
-        for(int i=0,j=0;i<=col2 && j<=col2 && i>=col1 && j>=row1;){
+        int[][] matrix = new int[n][n];
+        int maxNum = n * n;
+        int curNum = 1;
+        int row =0,column= 0;
+        //右下左上
+        int [][] diretions= {{0,1},{1,0},{0,-1},{-1,0}};
+        int directionIndex = 0;
+
+        while(curNum <= maxNum){
+            matrix[row][column] = curNum;
+            curNum++;
+            //判断是否转向
+            int nexRow = row + diretions[directionIndex][0],nexColumn = column + diretions[directionIndex][1];
+            if(nexRow < 0 || nexRow >=n || nexColumn < 0 || nexColumn >=0 || matrix[nexRow][nexColumn] !=0){
+                directionIndex = (directionIndex +1) % 4;
+            }
+            //下一个坐标位置
+            row = row + diretions[directionIndex][0];
+            column = column + diretions[directionIndex][1];
         }
 
-        return null;
+        return matrix;
     }
 }
