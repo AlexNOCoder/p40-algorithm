@@ -20,7 +20,7 @@ public class SolutionByAlex {
          return 0;
         }
         int[][] dp = new int[m+1][n+1];
-
+        //将t字符串为0的情况都置为1
         for (int i = 0; i <= m; i++) {
             dp[i][n] = 1;
         }
