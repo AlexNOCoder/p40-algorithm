@@ -21,4 +21,7 @@ public class SolutionByJack {
         }
         throw new IllegalArgumentException("No two sum solution");
     }
+
+    public void test(){
+    }
 }
