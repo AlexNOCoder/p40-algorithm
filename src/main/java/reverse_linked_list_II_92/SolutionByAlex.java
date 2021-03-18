@@ -3,6 +3,7 @@ package reverse_linked_list_II_92;
 import common.ListNode;
 
 public class SolutionByAlex {
+    //翻转从left到right区间的链表
     public ListNode reverseBetween(ListNode head, int left, int right) {
         if(left ==1){
             return reverseN(head,right);
