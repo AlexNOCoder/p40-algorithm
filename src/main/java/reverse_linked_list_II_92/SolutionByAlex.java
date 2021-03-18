@@ -25,6 +25,12 @@ public class SolutionByAlex {
         return last;
     }
     //翻转整个链表
+    //1 (2 3 4 5 6)
+    // 1 (2 (3 4 5 6))
+    // 1 (2 (3 (4 5 6)))
+    // 1 (2 (3 (4 (5 6))))
+    // 1 (2 (3 (4 (5 (6)))))
+
     public ListNode reverse(ListNode head){
         if(head.next == null){
             return head;
