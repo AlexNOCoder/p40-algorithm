@@ -2,6 +2,7 @@ package _132_pattern_456;
 
 import java.util.Stack;
 
+
 public class SolutionByAlex {
     //单调栈，保证栈顶的元素是最小的
     public static boolean find132pattern(int[] nums) {
