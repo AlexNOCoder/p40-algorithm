@@ -7,34 +7,6 @@ public class SolutionByAlex {
 //
 //    返回同样按升序排列的结果链表。
 
-    public static ListNode deleteDuplicates(ListNode head) {
-        //使用三个指针，pre表示前一个已确定唯一的数字
-        // duplicate 表示重复
-        //初始化
-        ListNode pre = new ListNode();
-        pre.next = head;
-        ListNode cur =  pre.next;
-        ListNode tail = cur.next;
-        while(tail != null){
-            if(cur.val != tail.val){
-                pre = cur;
-                cur = cur.next;
-                tail = tail.next;
-                continue;
-            }
-            int curVal = cur.val;
-            while(curVal == tail.val){
-                pre.next = cur.next;
-                cur = cur.next;
-                tail = tail.next;
-            }
-            pre = cur;
-            cur = cur.next;
-            tail = tail.next;
-        }
-        return head;
-    }
-
 
     public static ListNode duplicateNode(ListNode head){
         if (head == null) {
