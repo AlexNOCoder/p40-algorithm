@@ -2,8 +2,7 @@ package test_alex.pagelimit;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.ImmutableList;
-
-import java.util.ArrayList;
+import test_alex.Person;
 import java.util.List;
 
 /**
@@ -27,7 +26,6 @@ public class TestMemoryTest {
     }
 
     public static void testMemoryTest(){
-
         MemoryPageInfo pageInfo = new MemoryPageInfo(3,2);
         MemoryPageHelper pageHelper = new MemoryPageHelper(persons,pageInfo);
         MemoryPage memoryPage = pageHelper.fetchData();
@@ -36,34 +34,5 @@ public class TestMemoryTest {
 
 }
 
-class Person{
-    private Integer personId;
-    private String personName;
-    private Integer age;
-    private String gender;
-
-    public Integer getPersonId() {
-        return personId;
-    }
-
-    public String getPersonName() {
-        return personName;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public Person(Integer personId, String personName, Integer age, String gender) {
-        this.personId = personId;
-        this.personName = personName;
-        this.age = age;
-        this.gender = gender;
-    }
 
 
-}
