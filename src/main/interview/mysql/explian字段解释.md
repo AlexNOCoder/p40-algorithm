@@ -219,3 +219,68 @@ alter table taddr add fulltext ft_addr(addr);
 - filtered列
   使用explain extened时会出现这个列，5.7之后的版本默认就有这个字段，不需要使用explain extendedle
   这个字段表示存储引擎返回的数据在server层过滤后，剩下多少满足查询的记录数量比例，注意是百分比，不是具体记录数。
+  
+- extra列
+  - 这个列包含不适合在其他列中显示中十分重要的额外的信息，这个列可以显示的信息非常多，有几十种，常用的有
+  - using temporary
+    - 表示使用了临时表存储中间结果
+    - Mysql在对查询结果order by和group by时使用临时表
+    - 临时表可以是内存临时表和磁盘临时表，执行计划中看不出来，需要查看status变量
+    ```sql
+    explain select distinct a.id from tuser a,tdep b where a.dep = b.id;
+    ```
+  - no tables used
+    - 不带from字句的查询或者From dual查询
+    - 使用not in()形式子查询或者not exists运算符的连接查询，这种叫做返连接即：一般连接查询是先查询内表，再查询外表，反连接就是先查询外表，再查询内表。
+    ```sql
+    explain select now() from dual
+    ```
+
+  - using filesort
+    - 排序时无法使用索引时，就会出现这个，常见于order by和group by语句中
+    - 说明Mysql会使用一个外部的索引排序，而不是按照索引顺序进行读取
+    - mysql中无法利用索引完成的排序操作称为"文件排序"
+    ```sql
+    explain select * from tuser order by address
+    ```
+
+  - using index
+    - 即explain的输出结果Extra字段为Using index时，能够触发索引覆盖。
+    - 查询时不需要回表查询，直接通过索引就可以获取查询的数据。
+       1. 表示相应的select查询中使用到了覆盖索引(Covering index),避免访问表的数据行，效率不错
+       2. 如果同时出现Using where，说明索引被用来执行查询索引键值
+       3. 如果没有同时出现Using where，表明索引用来读取数据而非执行查找动作
+    - 全值匹配 覆盖索引
+      ```sql
+      explain select name,age,sex from tuser
+      ```
+
+  - using where
+    - 表示存储引擎返回的记录并不是所有的都满足查询条件，需要在server层进行过滤
+    - 查询条件无索引
+     ```sql
+     explain select * from user where address = 'beijing'
+    ```
+    - 索引失效
+    ```sql
+    explain select * from user where age =1
+    ```
+  - using index condition
+    - 搜索条件中虽然出现了索引列，但是有部分条件无法使用索引，会根据能用索引的条件先搜索一遍再匹配无法使用索引的条件。
+    - 查询条件中分为限制条件和检查条件，5.6之前，存储引擎只能根据限制条件扫描数据并返回，然后server层根据检查条件进行过滤再返回真正符合查询的条件。
+    - 5.6.x之后支持ICP特性，可以把检查条件也下推到存储引擎层，不符合检查条件和限制条件的数据，直接不读取，这样就大大减少了存储引擎扫描的记录数量。extra 列显示using index condition
+    ```sql
+    explain select * from tuser where name = 'asd';
+    ```
+  - firstmatch(tb_name)
+    - 5.6.x开始引入的优化子查询的新特性之一，常见于where字句含有in()类型的子查询。如果内表的数据量比较大，就可能出现这个
+    
+  - looseescan(m...n)
+    - 5.6.x之后引入的优化子查询的新特性之一，在in()类型的子查询中，子查询返回的可能有重复记录时，就可能出现这个
+       1. 除了这些之外，还有很多查询数据字典表，执行计划过程中就发现不可能存在结果的一些提示信息
+
+- 除了all之外，其他的type都可以使用到索引，除了index_merge之外，其他的type只可以用到一个索引
+
+- 注意：最少要索引使用到range级别
+
+    
