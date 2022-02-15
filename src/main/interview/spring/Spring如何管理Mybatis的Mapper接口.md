@@ -1,0 +1,9 @@
+#Spring如何管理Mybatis的Mapper接口
+### 说明
+1. 首先Mybatis的Mapper接口核心是JDK动态代理
+2. Spring会排除接口，无法注册到IOC容器中
+3. MyBatis实现了BeanDefinitionRegistryPostProcessor可以动态注册BeanDefinition
+3. 需要自定义扫描器(继承Spring内部扫描器ClassPathBeanDefinitionScanner)重写排除接口的方法(isCandidateComponent)
+4. 但是接口虽然注册成了BeanDefinition但是无法实例化Bean因为接口无法实例化
+5. 需要将BeanDefinition的BeanClass(接口)替换成JDK动态代理的实例(改成FactoryBean)
+6. Mybatis通过FactoryBean的工厂方法设计模式可以自由控制Bean的实例化过程，可以在getObejct方法中创建动态代理

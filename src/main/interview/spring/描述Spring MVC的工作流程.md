@@ -1,0 +1,14 @@
+#描述Spring MVC的工作流程
+### 说明
+
+1. 用户发送请求到前端控制器DispatcherServlet
+1. DispatcherServlet收到请求后，调用HandlerMapping处理器映射器，请求获取Handle
+1. 处理器映射器根据请求url找到具体的处理器，生成处理器对象以及处理器拦截器(如果有则生成)一并返回给DispatcherServlet
+1. DispatcherServlet调用HandlerAdapter处理器适配器
+1. HandlerAdapter经过适配调用具体处理器(Handler，也叫后端控制器)
+1. Handler执行完成返回ModleAndView
+1. HandlerAdapter将Handler执行结果ModelAndView返回给DispatcherServlet
+1. DispatcherServlet将ModleAndView传给ViewResolver视图解析器进行解析
+1. ViewResolver解析后返回具体View
+1. DispatcherServlet对View进行渲染视图(即将模型数据填充至视图中)
+1. DispatcherServlet响应用户
