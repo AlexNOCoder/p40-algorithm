@@ -1,0 +1,5 @@
+# Spring容器启动时，为什么先加载BeanFactoryPostProcessor
+
+### 说明
+1. 因为BeanDefinition会在ioc容器加载得先注册，而BeanFactoryPostProcess就是在所有的BeanDefinition注册完后做扩展的，所以要先加载BeanFactoryPostProcess
+2. 解析配置类的组件ConfigurationClassPostProcessor也实现了BeanFactoryPostProcessor，所以要先去加载BeanFactoryPostProcessor
