@@ -8,13 +8,15 @@ public class SolutionByAlex {
         ListNode l1 = new ListNode(9);
         l1.next = new ListNode(9);
         l1.next.next = new ListNode(9);
+        l1.next.next.next = new ListNode(9);
+        l1.next.next.next.next = new ListNode(9);
 
-        ListNode l2 = new ListNode(2);
-//        l2.next = new ListNode(6);
-//        l2.next.next = new ListNode(4);
+        ListNode l2 = new ListNode(9);
+        l2.next = new ListNode(9);
+        l2.next.next = new ListNode(9);
 
-        addTwoNumbers(l1,l2);
-//          add(l1,2);
+        addTwoNumbers3(l1,l2);
+        System.out.println();
     }
 
 
@@ -112,5 +114,53 @@ public class SolutionByAlex {
             }
 
         }
+
+
+// faster!
+    public static ListNode addTwoNumbers3(ListNode l1, ListNode l2) {
+        ListNode result = new ListNode();
+        ListNode head = result;
+        int flag = 0;
+        while(l1 != null || l2 != null){
+            if(l1 == null){
+                int temp  = getRealValue(l2.val + flag);
+                head.next = new ListNode(temp) ;
+                head = head.next;
+                flag = getFlag(l2.val + flag);
+                // 指针右移
+                l2 = l2.next;
+                continue;
+            }
+            if(l2 == null){
+                int temp  = getRealValue(l1.val + flag);
+                head.next =  new ListNode(temp) ;
+                head = head.next;
+                flag = getFlag(l1.val + flag);
+                // 指针右移
+                l1 = l1.next;
+                continue;
+            }
+            // 普通处理加法
+            head.next = new ListNode(getRealValue(l1.val  + l2.val+ flag));
+            head = head.next;
+            flag = getFlag(l1.val  + l2.val+ flag);
+            // 指针右移
+            l2 = l2.next;
+            l1 = l1.next;
+
+        }
+        if(flag == 1){
+            head.next = new ListNode(1);
+        }
+        return result.next;
+    }
+
+    public static int getRealValue(int value){
+        return value > 9 ? value - 10:value;
+    }
+    public static int getFlag(int value){
+        return value > 9 ? 1:0 ;
+    }
+
 }
 
