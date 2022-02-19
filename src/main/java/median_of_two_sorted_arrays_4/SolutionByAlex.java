@@ -9,7 +9,7 @@ public class SolutionByAlex {
     public static void main(String[] args) {
         int[] nums1 ={1,2};
         int[] nums2 ={3,4};
-        System.out.println(findMedianSortedArrays(nums1,nums2));
+        System.out.println(findMedianSortedArrays2(nums1,nums2));
     }
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -116,6 +116,58 @@ public class SolutionByAlex {
 
         return result;
 
+    }
+
+    public static double findMedianSortedArrays2(int[] nums1, int[] nums2){
+        int totalLength = nums1.length + nums2.length;
+        if(isOdd(totalLength)){
+            return  getNumberFromTwoArrays(totalLength/2,nums1,nums2);
+        }else {
+            int front = getNumberFromTwoArrays((totalLength/2)-1,nums1,nums2);
+            int back = getNumberFromTwoArrays(totalLength/2,nums1,nums2);
+            return (front+back)/2;
+        }
+
+    }
+
+    public static boolean isOdd(int totalLength){
+        return totalLength % 2 == 0 ? false : true;
+    }
+
+    public static int getNumberFromTwoArrays(int index,int[] arr1,int[] arr2){
+        int number = Integer.MIN_VALUE;
+        int total =0;
+        for(int index1=0,index2=0;index1 + index2 <= index;){
+           // 处理 arr1取完
+            if(index1 >= arr1.length){
+                number = arr2[index2];
+                index2 ++;
+                total++;
+            }
+            // 处理 arr2取完
+            if(index2 >= arr2.length){
+                number = arr1[index1];
+                index1 ++;
+                total++;
+            }
+            // 处理 arr1 和 arr2都未取完
+            if(index1 < arr1.length-1 && index2<arr2.length-1 ){
+                if(arr1[index1+1] <= arr2[index2+1]){
+                    number = arr1[index1];
+                    index1 ++;
+                    total++;
+                }else {
+                    number = arr2[index2];
+                    index2 ++;
+                    total++;
+                }
+            }
+            if(total == index){
+                return number;
+            }
+        }
+
+        return number ;
     }
 
 }
