@@ -43,3 +43,8 @@ SDIFF set1 set2 set 3 差集
    - SISMEMBER eSet b
 6. a可能认识的人
     - SDIFF bSet aSet ->{f}
+
+
+- 内部编码
+   - 整型集合(intset)
+   - 哈希表(Hashtable)

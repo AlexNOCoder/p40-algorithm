@@ -11,3 +11,7 @@
    - hotNews:20200813 hotNews:20200814 ... hotNews:20200819
 4. 展示七日排行前十
     - ZREVRANGE hotNews:202008130-20200819 0 9 WITHSCORES
+
+- 内部编码
+   - 压缩表(Ziplist)
+   - 跳跃表(Skiplist) 

@@ -19,3 +19,7 @@
 3. 商品总数:hlen cart:1001
 4. 删除商品:hdel cart:1001 10088
 5. 获取购物车所有商品:hgeall cart:1001
+
+- 内部编码
+  - 哈希表(Hashtable)
+  - 压缩表(Ziplist)  

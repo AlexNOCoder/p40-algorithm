@@ -18,3 +18,7 @@
    
 3. A查看最新微博消息
    - LRANGE msg:{A-ID} 0 4
+    
+- 内部编码
+  - 双端链表(Linkedlist)
+  - 压缩表(Ziplist)  
