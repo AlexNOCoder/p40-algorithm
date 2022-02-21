@@ -15,3 +15,7 @@
 - 内部编码
    - 压缩表(Ziplist)
    - 跳跃表(Skiplist) 
+   
+- 配置
+  - zset-max-ziplist-entries 5 小于等于五个用ziplist，超过五个用skiplist存储
+  - zset-max-ziplist-value 64  

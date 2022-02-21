@@ -117,4 +117,28 @@ public class Test {
         }
     }
 
+    int binarySearch(int[] nums,int target,int low,int high) {
+        // 在while循环中，判断一下搜索的区间是否有效
+        while(low <= high){
+            // 计算正中间数的下标
+            int middle = low +(high -low)/2;
+            // 判断一下正中间的那个数是不是要找的目标数target。如果是，就返回下标middle
+            if(nums[middle] == target){
+                return middle;
+            }
+            // 如果发现目标数在左边，调整搜索区间的终点为middle -1
+            if(target < nums[middle]){
+                high = middle -1;
+            }else{
+                // 否则，调整搜索区间的终点为middle+1
+                low = middle + 1;
+            }
+        }
+        // 如果超出了搜索区间，表明无法找到目标数，返回-1
+        return -1;
+    }
+
+
+
+
 }
