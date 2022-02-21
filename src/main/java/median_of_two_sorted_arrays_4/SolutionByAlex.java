@@ -1,5 +1,8 @@
 package median_of_two_sorted_arrays_4;
 
+import static com.sun.tools.javac.jvm.ByteCodes.swap;
+import static kth_largest_element_in_an_array_215.SolutionByAlex.findKthLargest;
+
 /**
    * @author luoyuntian
    * @date 2020-08-23 12:59
@@ -9,7 +12,7 @@ public class SolutionByAlex {
     public static void main(String[] args) {
         int[] nums1 ={1,2};
         int[] nums2 ={3,4};
-        System.out.println(findMedianSortedArrays2(nums1,nums2));
+//        System.out.println(findMedianSortedArrays2(nums1,nums2));
     }
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -118,57 +121,105 @@ public class SolutionByAlex {
 
     }
 
-    public static double findMedianSortedArrays2(int[] nums1, int[] nums2){
-        int totalLength = nums1.length + nums2.length;
-        if(isOdd(totalLength)){
-            return  getNumberFromTwoArrays(totalLength/2,nums1,nums2);
+    // faster
+    // 根据两个字符串长度的总和判断如何调用递归函数以及返回结果
+    public  double findMedianSortedArrays2(int[] nums1, int[] nums2){
+        int m = nums1.length;
+        int n = nums2.length;
+        int k= (m+n)/2;
+        // 当总长度为奇数时，返回正中央的数
+        if((m+n)%2 == 1){
+            return findKth(nums1,0,m-1,nums2,0,n-1,k+1);
+        }else{
+            // 当总长度为偶数时，返回中间两个数的平均值
+            return (findKth(nums1,0,m-1,nums2,0,n-1,k) + findKth(nums1,0,m-1,nums2,0,n-1,k+1))/2.0;
+        }
+    }
+    // 寻找第k小的元素
+    public double findKth(int[] nums1,int l1,int h1,int[] nums2,int l2,int h2,int k){
+        int m = h1 - l1 +1;
+        int n = h2 - l2 +1;
+        // 如果nums1数组的长度大于nums2数组的长度
+        // 将二者互换，加快程序结束
+        if(m > n){
+          return findKth(nums2,l2,h2,nums1,l1,h1,k);
+        }
+        // 当nums1数组长度为0时，
+        // 直接返回nums2数组的第k小的数
+        if(m == 0){
+            return nums2[l2+k-1];
+        }
+        // 当k=1时，返回两个数组中的最小值
+        if(k == 1){
+            return Math.min(nums1[l1],nums2[l2] );
+        }
+        // 分别去两个数组中的中间数
+        int na = Math.min(k/2,m);
+        int nb = k - na;
+        int va = nums1[l1 + na -1];
+        int vb = nums2[l2 + nb -1];
+        // 比较下两者的大小
+        // 如果相等，表明中位数已经找到，返回该值
+        // 如果不等，进行剪枝处理
+        if(va == vb){
+         return va;
+        }else if (va < vb){
+            return findKth(nums1,l1+na,h1,nums2,l2,l2+nb-1,k-na);
         }else {
-            int front = getNumberFromTwoArrays((totalLength/2)-1,nums1,nums2);
-            int back = getNumberFromTwoArrays(totalLength/2,nums1,nums2);
-            return (front+back)/2;
+            return findKth(nums1,l1,l1+na-1,nums2,l2+nb,h2,k-nb);
         }
-
     }
 
-    public static boolean isOdd(int totalLength){
-        return totalLength % 2 == 0 ? false : true;
+   // 通过快速选择算法实现
+    public  double findMedianSortedArrays3(int[] nums1, int[] nums2){
+        int m = nums1.length;
+        int n = nums2.length;
+        int k= (m+n)/2;
+        return (m+n)%2 == 1?findKthLargest(nums1,nums2,k+1):(findKthLargest(nums1,nums2,k)+findKthLargest(nums1,nums2,k+1))/2.0;
+    }
+    public double findKthLargest(int[] nums1, int[] nums2,int k){
+        return quickSelect(nums1,nums2,0,nums1.length+nums2.length-1,k);
     }
 
-    public static int getNumberFromTwoArrays(int index,int[] arr1,int[] arr2){
-        int number = Integer.MIN_VALUE;
-        int total =0;
-        for(int index1=0,index2=0;index1 + index2 <= index;){
-           // 处理 arr1取完
-            if(index1 >= arr1.length){
-                number = arr2[index2];
-                index2 ++;
-                total++;
-            }
-            // 处理 arr2取完
-            if(index2 >= arr2.length){
-                number = arr1[index1];
-                index1 ++;
-                total++;
-            }
-            // 处理 arr1 和 arr2都未取完
-            if(index1 < arr1.length-1 && index2<arr2.length-1 ){
-                if(arr1[index1+1] <= arr2[index2+1]){
-                    number = arr1[index1];
-                    index1 ++;
-                    total++;
-                }else {
-                    number = arr2[index2];
-                    index2 ++;
-                    total++;
-                }
-            }
-            if(total == index){
-                return number;
+    public double quickSelect(int[] nums1, int[] nums2,int low,int high,int k){
+        int pivot = low;
+        for(int j=low;j<high;j++){
+            if(getNum(nums1,nums2,j) <= getNum(nums1,nums2,high)){
+                swap(nums1,nums2,pivot++,j);
             }
         }
-
-        return number ;
+        swap(nums1,nums2,pivot,high);
+        int count = high - pivot +1;
+        if( count == k){
+            return getNum(nums1,nums2,pivot);
+        }
+        if(count > k){
+            return quickSelect(nums1,nums2,pivot+1,high,k);
+        }
+        return  quickSelect(nums1,nums2,low,pivot-1,k-count);
     }
+    public int getNum(int[] nums1, int[] nums2, int index){
+        return (index < nums1.length) ? nums1[index] : nums2[index - nums1.length];
+    }
+
+    public void swap(int[] nums1, int[] nums2,int i,int j){
+        int m = nums1.length;
+        if(i < m && j < m){
+            swap(nums1,i,j);
+        }else if(i >= m && j>= m){
+            swap(nums2,i-m,j-m);
+        }else if(i < m && j>= m){
+            int temp = nums1[i];
+            nums1[i] = nums2[j-m];
+            nums2[j-m] = temp;
+        }
+    }
+    public void swap(int[] nums,int i,int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
 
 }
 

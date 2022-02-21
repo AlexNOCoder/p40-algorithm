@@ -1,5 +1,7 @@
 # redis集群方案
 
+### 主从模式
+- master-slave
 ### 哨兵模式
 
 - sentinel，哨兵是redis集群中非常重要的一个组件，主要有以下功能:
