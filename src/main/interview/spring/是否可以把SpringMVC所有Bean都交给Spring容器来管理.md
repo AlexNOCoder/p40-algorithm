@@ -1,0 +1,6 @@
+# 是否可以把SpringMVC所有Bean都交给Spring容器来管理
+
+### 说明
+- 不可以，这样会导致我们请求接口的时候产生404。如果所有的Bean都交给父容器，SpringMVC在初始化HandlerMethods的时候(initHandlerMethods)无法更具Controller的handler方法注册HandlerMethod，并没有去查找父容器的bean；也就无法更具请求URI获取到HandlerMethod来 进行匹配。
+
+- 在源码：obtainApplicationContext().getBeanNamesForType(Object.class),实际上是获得当前容器的所有BeanDefinitionNames体现。

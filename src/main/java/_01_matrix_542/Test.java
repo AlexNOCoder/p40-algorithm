@@ -1,9 +1,6 @@
 package _01_matrix_542;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Test {
