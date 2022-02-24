@@ -7,8 +7,8 @@ import java.util.*;
 
 public class SolutionByAlex {
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring3("dvdf"));
-        System.out.println(lengthOfLongestSubstring3("pwwkew"));
+//        System.out.println(lengthOfLongestSubstring3("dvdf"));
+//        System.out.println(lengthOfLongestSubstring3("pwwkew"));
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -41,27 +41,45 @@ public class SolutionByAlex {
     }
 
 
-    // fater
-    public static int lengthOfLongestSubstring3(String s){
-        // 处理s为
-        if(s == null || s.length() == 0){
-            return 0;
-        }
-        // key 为 char，value 为 index
-        HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+    // clear
+    int legnthOfLongestSubString2(String s){
+        // 定义一个哈希集合set,初始化结果max为0
+        Set<Character> set = new HashSet<>();
         int max = 0;
-        int left = 0;
-        for(int i = 0; i < s.length(); i++){
-            if(map.containsKey(s.charAt(i))){
-                // 如果已经存在，将left移动到上一个出现位置的下一个
-                left = Math.max(left,map.get(s.charAt(i)) + 1);
+        // 利用快慢指针i和j扫描一遍字符串
+        for(int i=0,j=0;j<s.length();j++){
+            // 如果快指针指向的字符串已经出现在哈希集合中
+            // 不断尝试将慢指针指向字符从哈希集合中删除
+            while(set.contains(s.charAt(j))){
+                set.remove(s.charAt(i));
+                i++;
             }
-            map.put(s.charAt(i),i);
-            max = Math.max(max,i-left+1);
+            // 当快指针的字符终于能加入到哈希集合，更新结果max
+            set.add(s.charAt(j));
+            max = Math.max(max,set.size());
         }
+        // 遍历完毕后，返回结果max
         return max;
     }
 
-
-
+    // faster
+    int legnthOfLongestSubString3(String s){
+        // 定义一个哈希集合set记录上一次字符出现的位置
+        Map<Character,Integer> map = new HashMap<>();
+        // 初始化结果max为0
+        int max = 0;
+        // 利用快慢指针i和j扫描一遍字符串
+        for(int i=0,j=0;j<s.length();j++){
+            // 如果发现快指针对应的字符已经出现过，慢指针就进行跳跃
+           if(map.containsKey(s.charAt(j))) {
+                i = Math.max(i,map.get(s.charAt(j))+1);
+           }
+           // 把快指针所对应的字符添加到哈希表中
+           map.put(s.charAt(j),j);
+           // 更新max
+           max = Math.max(max,j-i+1);
+        }
+        // 返回max
+        return max;
+    }
 }

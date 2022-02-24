@@ -1,7 +1,7 @@
 # ApplicationContext是什么
 
 ### 说明
-ApplicationContext是比BeanFactoryBean更加强大的Spring容器，它既可以创建bean、获取bean，还支持国际化，事件广播、获取资源等BeanFacotry不具备的功能。
+ApplicationContext是比BeanFactory更加强大的Spring容器，它既可以创建bean、获取bean，还支持国际化，事件广播、获取资源等BeanFacotry不具备的功能。
 
 ApplicationContext所继承的接口
 - EnvironmentCapable
