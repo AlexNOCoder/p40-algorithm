@@ -1,0 +1,4 @@
+# JVM对象的年龄必须达到阈值才会晋升老年代吗
+### 说明
+
+为了更好适应不同程序的内存状况，HotSpot虚拟机并不是永远要求对象的年龄必须达到-XX:MaxTenuringThreshold才能晋升老年代，如果在Survivor空间中相同年龄所有对象大小的总和大于Survivor空间的一半，年龄大于或等于该年龄的对象就可以直接进入老年代，无需等到-XX:MaxTenuringThreshold要求的年龄。
