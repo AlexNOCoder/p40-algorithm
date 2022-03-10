@@ -65,6 +65,7 @@ public class ThreadPoolMonitor {
                     }
                 }
         );
+
         TimeUnit.SECONDS.sleep(60);
         System.out.println("*** result："+ atomicInteger.intValue());
     }
