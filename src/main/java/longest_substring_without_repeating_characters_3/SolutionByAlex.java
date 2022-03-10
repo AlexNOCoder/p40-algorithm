@@ -1,8 +1,6 @@
 package longest_substring_without_repeating_characters_3;
 
 
-import org.springframework.util.StringUtils;
-
 import java.util.*;
 
 public class SolutionByAlex {

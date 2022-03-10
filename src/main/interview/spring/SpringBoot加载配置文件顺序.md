@@ -10,3 +10,9 @@
    即./application.properties
 4. classpath:config
 5. classpath:
+
+## 也可以说：
+工程根目录：./config/
+2) 工程根目录：./
+3)classpath: /config/
+4)classpath: /
