@@ -47,4 +47,5 @@ Visitor模式则是在遍历元素集合的过程中，对元素进行相同的�
 - Composite模式  
 Composite模式是具有递归结构的模式，在其中使用Iterator模式比较困难。  
 - Factroy Method模式  
-在iterator方法中生成Iterator的实例可能会使用Factory Method模式。
+在iterator方法中生成Iterator的实例可能会使用Factory Method模式。  
+测试提交
