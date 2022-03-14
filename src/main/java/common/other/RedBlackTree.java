@@ -144,7 +144,7 @@ public class RedBlackTree {
         }else {
             parent.setRight(node);
         }
-        // 设置府机电
+        // 设置父节点
         node.setParent(parent);
         // 自平衡
         balanceInsert(node);
