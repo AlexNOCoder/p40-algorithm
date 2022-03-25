@@ -1,6 +1,5 @@
 package median_of_two_sorted_arrays_4;
 
-import static com.sun.tools.javac.jvm.ByteCodes.swap;
 import static kth_largest_element_in_an_array_215.SolutionByAlex.findKthLargest;
 
 /**
