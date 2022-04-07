@@ -1,4 +1,7 @@
 package common.designPattern.strategy;
+
+import java.util.concurrent.ConcurrentHashMap;
+
 public class GroupbuyStrategy implements PromotionStrategy{
 
     @Override

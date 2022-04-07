@@ -1,4 +1,7 @@
 package common.utils;
+
+import java.util.Stack;
+
 public class QuickMatrix {
 
     //两个矩阵相乘
@@ -35,13 +38,27 @@ public class QuickMatrix {
         return res;
     }
     public static void main(String[] args) {
-        int [][]arr={{1,1,1},{1,1,1},{1,1,1}};
-        int[][]arr1=quickMatrix(arr,3);
-        for(int i=0;i<arr1.length;i++){
-            for(int j=0;j<arr1[0].length;j++){
-                System.out.print(arr1[i][j]+"   ");
-            }
-            System.out.println();
+    double a = -5 + 1/4 + 2*-3 + 5.0;
+        System.out.println(a);
+//        int [][]arr={{1,1,1},{1,1,1},{1,1,1}};
+//        int[][]arr1=quickMatrix(arr,3);
+//        for(int i=0;i<arr1.length;i++){
+//            for(int j=0;j<arr1[0].length;j++){
+//                System.out.print(arr1[i][j]+"   ");
+//            }
+//            System.out.println();
+//        }
+    }
+
+    public static void test1(){
+        try{
+            System.out.println("test1-1");
+            return;
+        }catch(Exception e){
+
+        }finally{
+            System.out.println("test1-2");
+            return;
         }
     }
 
