@@ -22,7 +22,6 @@ public class CoinChange {
                 //边界条件1：硬币面值要小于等于目标金额
                 //边界条件2：如果f[i - coins[j]]已经是无穷大了，直接pass，不然再+1会int越界
                 if(i >= coins[j] && f[i - coins[j]] != Integer.MAX_VALUE){ //着重注意点5：边界情况处理
-
                     f[i] = Math.min(f[i-coins[j]]+1,f[i]);//着重注意点6：转移方程
                 }
             }

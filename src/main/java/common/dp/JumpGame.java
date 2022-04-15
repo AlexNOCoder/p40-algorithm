@@ -23,7 +23,6 @@ public class JumpGame {
                 }
             }
         }
-
         //结果为f[n-1]
         return f[n -1];
     }
