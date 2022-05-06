@@ -9,7 +9,7 @@ public class SolutionByAlex {
     }
 
     public TreeNode bulid(int[] preorder,int preStart,int preEnd, int[] inorder,int inStart,int inEnd){
-        if(preStart > preStart){
+        if(preStart > preEnd){
             return null;
         }
         int rootVal = preorder[preStart];
