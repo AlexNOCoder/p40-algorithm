@@ -1,42 +1,27 @@
 package permutations_46;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SolutionByAlex {
-    public static List<List<Integer>> permute(int[] nums) {
-        //回溯法：一种通过探索所有可能的候选解来找出所有的解的算法。
-        // 如果候选解被确认不是一个解（或者至少不是最后一个解），回溯算法会通过在上一步进行一些变化抛弃该解，即回溯并且再次尝试。
-        List<List<Integer>> res = new ArrayList<>();
-        List<Integer> output = new ArrayList<>();
-        for(int num:nums){
-            output.add(num);
-        }
-        int n = nums.length;
-        backtrack(n,output,res,0);
+    List<List<Integer>> res = new LinkedList<List<Integer>>();
+    public List<List<Integer>> permute(int[] nums) {
+        LinkedList<Integer> track = new LinkedList<Integer>();
+        trackBack(nums,track);
         return res;
     }
-
-    public static void backtrack(int n,List<Integer> output,List<List<Integer>> res,int first){
-        //结束条件，所有数字都已经选完
-        if(first == n){
-            System.out.println("put: "+output.toString());
-            res.add(new ArrayList<>(output));
+    public void trackBack(int[] nums,LinkedList<Integer> track){
+        if(track.size() == nums.length){
+            res.add(new LinkedList<>(track));
+            return;
         }
-        for(int i = first;i<n;i++){
-            //维护动态数组
-            Collections.swap(output,first,i);
-            //继续填下一个数
-            backtrack(n,output,res,first+1);
-            //撤销
-            Collections.swap(output,first,i);
+        for(int i=0;i< nums.length;i++){
+            if(track.contains(nums[i])){
+                continue;
+            }
+            track.add(nums[i]);
+            trackBack(nums,track);
+            track.removeLast();
         }
-    }
-
-    public static void main(String[] args) {
-        int [] input = {1,2,3};
-        permute(input);
     }
 }
