@@ -38,5 +38,4 @@ public class SolutionByAlex {
         }
         return res;
     }
-
 }
