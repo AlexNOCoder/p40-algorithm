@@ -27,7 +27,7 @@ public class Order {
     //单层递归逻辑
     public static void preOrder(TreeNode note, List<Integer> res){
         //中，左，右
-//        res.add(note.val);
+        res.add(note.val);
         preOrder(note.left, res);
         preOrder(note.right, res);
     }

@@ -6,12 +6,12 @@ package zzelements.binarytree;
  * @author: lijie
  * @create: 2022-10-31 22:32
  */
-public class TreeNode<E> {
-    E val;
+public class TreeNode {
+    Integer val;
     public TreeNode left = null;
     public TreeNode right = null;
 
-    public TreeNode(E x){
+    public TreeNode(Integer x){
         val = x;
     }
 

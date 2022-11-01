@@ -11,15 +11,15 @@ import java.util.List;
  * @author: lijie
  * @create: 2022-10-31 23:31
  */
-public class BinaryTree<E> {
+public class BinaryTree {
     //根节点
-    private TreeNode<E> root = null;
+    private TreeNode root = null;
 
     //建立二叉树时，用于缓存数据的栈空间
-    private LinkedList<E> stack = null;
+    private LinkedList stack = null;
 
     //保存二叉树数据的列表
-    private List<E> elements = new ArrayList<>();
+    private List elements = new ArrayList<>();
 
     //无参构造器
     public BinaryTree(){}
@@ -29,15 +29,15 @@ public class BinaryTree<E> {
      * 需要传入左递归顺序的数据
      * @param data 左递归顺序的数组数据
      */
-    public BinaryTree(E[] data){
-        this.stack = new LinkedList<E>(Arrays.asList(data));
+    public BinaryTree(Integer[] data){
+        this.stack = new LinkedList<Integer>(Arrays.asList(data));
         CreateBinaryTree();
     }
 
-    public TreeNode<E> getRoot(){
+    public TreeNode getRoot(){
         return this.root;
     }
-    public void setRoot(TreeNode<E> root){
+    public void setRoot(TreeNode root){
         this.root = root;
     }
 
@@ -56,8 +56,8 @@ public class BinaryTree<E> {
      * 左递归建立二叉树，需要传入左递归顺序的二叉树数据
      * @param data
      */
-    public void recursiveCreateBinatyTree(E[] data){
-        this.stack = new LinkedList<E>(Arrays.asList(data));
+    public void recursiveCreateBinatyTree(Integer[] data){
+        this.stack = new LinkedList<Integer>(Arrays.asList(data));
         if (!stack.isEmpty()){
             this.root = recursiveCreateBinaryTree(this.root, this.stack);
         }else{
@@ -71,13 +71,13 @@ public class BinaryTree<E> {
      * @param stack
      * @return返回跟节点
      */
-    private TreeNode<E> recursiveCreateBinaryTree(TreeNode<E> node, LinkedList<E> stack){
+    private TreeNode recursiveCreateBinaryTree(TreeNode node, LinkedList<Integer> stack){
         if(!stack.isEmpty()){
-            E value = stack.pop();
+            Integer value = stack.pop();
             if (value == null){
                 node = null;
             }else {
-                node = new TreeNode<>();
+                node = new TreeNode();
                 node.val = value;
                 node.left = recursiveCreateBinaryTree(node.left, stack);
                 node.right = recursiveCreateBinaryTree(node.right, stack);
@@ -86,6 +86,57 @@ public class BinaryTree<E> {
             return null;
         }
         return node;
+    }
+
+    /**
+     * 层序建立二叉树，需要传入层序建立二叉树数据
+     * @param data 缓存数据的数组
+     */
+    public void SequenceCreateBinaryTree(Integer[] data){
+        this.stack = new LinkedList<Integer>(Arrays.asList(data));
+        if (!stack.isEmpty()){
+            root = SequenceCreateBinaryTree(root, stack);
+        }else {
+            root = new TreeNode();
+        }
+    }
+
+    /**
+     * 层序建立二叉树，核心算法
+     * @param rootNode 根节点
+     * @param stack
+     * @return 返回根节点
+     */
+    private TreeNode SequenceCreateBinaryTree(TreeNode rootNode, LinkedList<Integer> stack){
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        if (!stack.isEmpty()){
+            rootNode = new TreeNode();
+            rootNode.val = stack.pop();
+            queue.addFirst(rootNode);
+        }else {
+            return null;
+        }
+
+        while(!stack.isEmpty()){
+            TreeNode currentNode = queue.removeLast();
+            Integer leftValue = stack.pop();
+            TreeNode leftNode = null;
+            if (leftValue != null){
+                leftNode = new TreeNode();
+                leftNode.val = leftValue;
+                queue.addFirst(leftNode);
+            }
+            currentNode.left = leftNode;
+            Integer rightValue = stack.pop();
+            TreeNode rightNode = null;
+            if (rightValue != null){
+                rightNode = new TreeNode();
+                rightNode.val = rightValue;
+                queue.addFirst(rightNode);
+            }
+            currentNode.right = rightNode;
+        }
+        return rootNode;
     }
 
 

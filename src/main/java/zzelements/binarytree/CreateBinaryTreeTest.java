@@ -12,11 +12,14 @@ public class CreateBinaryTreeTest {
         //递归建树数据
         Integer[] data = {1,2,3,null,null,null,3,null,null};
         //层序建立二叉树数据
+        Integer[] data1 = {1,2,3,null,null,null,null};
+        //建立递归二叉树
+        TestOneBinaryTree(data);
 
     }
 
     public static void TestOneBinaryTree(Integer[] data){
-        BinaryTree<Integer> binaryTree = new BinaryTree<>(data);
+        BinaryTree binaryTree = new BinaryTree(data);
         //前序遍历
         Order.preOrderTraversal(binaryTree.getRoot());
 
