@@ -47,9 +47,10 @@ public class BinaryTree {
     private void CreateBinaryTree(){
         if (!stack.isEmpty()){
             this.root = recursiveCreateBinaryTree(root, stack);
-        }else{
-            this.root = null;
         }
+//        else{
+//            this.root = null;
+//        }
     }
 
     /**
@@ -82,9 +83,10 @@ public class BinaryTree {
                 node.left = recursiveCreateBinaryTree(node.left, stack);
                 node.right = recursiveCreateBinaryTree(node.right, stack);
             }
-        }else {
-            return null;
         }
+//        else {
+//            return null;
+//        }
         return node;
     }
 

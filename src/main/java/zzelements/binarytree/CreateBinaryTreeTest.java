@@ -20,9 +20,11 @@ public class CreateBinaryTreeTest {
 
     public static void TestOneBinaryTree(Integer[] data){
         BinaryTree binaryTree = new BinaryTree(data);
-        //前序遍历
+        //前序遍历 递归
         Order.preOrderTraversal(binaryTree.getRoot());
 
+        //前序遍历 迭代
+        Order.preOrderTraversalRecursive(binaryTree.getRoot());
         // TODO: 2022/11/1
     }
 }

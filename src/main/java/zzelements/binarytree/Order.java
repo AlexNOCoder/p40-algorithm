@@ -2,6 +2,7 @@ package zzelements.binarytree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @program: p40-algorithm
@@ -20,7 +21,7 @@ public class Order {
         //调用递归函数
         preOrder(root, res);
         //返回结果
-        System.out.println(res);
+        System.out.println("前序遍历递归" + res);
         return res;
     }
 
@@ -28,7 +29,30 @@ public class Order {
     public static void preOrder(TreeNode note, List<Integer> res){
         //中，左，右
         res.add(note.val);
-        preOrder(note.left, res);
-        preOrder(note.right, res);
+        if (note.left != null){
+            preOrder(note.left, res);
+        }
+        if (note.right != null){
+            preOrder(note.right, res);
+        }
+    }
+
+
+    //前序遍历迭代法
+    public static List<Integer> preOrderTraversalRecursive(TreeNode root){
+        ArrayList<Integer> res = new ArrayList<>();
+        if (root == null){return res;}
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while(!stack.isEmpty()){
+            TreeNode curr = stack.pop();
+            res.add(curr.val);
+            if (curr.right != null)stack.push(curr.right);
+            if (curr.left != null)stack.push(curr.left);
+        }
+        System.out.println("前序遍历迭代" + res);
+        return res;
     }
 }
