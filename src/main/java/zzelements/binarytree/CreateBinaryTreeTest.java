@@ -25,6 +25,8 @@ public class CreateBinaryTreeTest {
 
         //前序遍历 迭代
         Order.preOrderTraversalRecursive(binaryTree.getRoot());
-        // TODO: 2022/11/1
+
+        //中序遍历 迭代
+        Order.inorderTraversalRecursive(binaryTree.getRoot());
     }
 }
