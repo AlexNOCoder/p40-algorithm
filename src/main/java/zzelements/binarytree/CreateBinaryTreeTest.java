@@ -28,5 +28,8 @@ public class CreateBinaryTreeTest {
 
         //中序遍历 迭代
         Order.inorderTraversalRecursive(binaryTree.getRoot());
+
+        //后续遍历 迭代
+        Order.postorderTraversalRecursive(binaryTree.getRoot());
     }
 }

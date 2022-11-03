@@ -1,6 +1,7 @@
 package zzelements.binarytree;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -88,6 +89,28 @@ public class Order {
             curr = node.right;
         }
         System.out.println("中序遍历迭代" + res);
+        return res;
+    }
+
+    //后续遍历二叉树 迭代法
+    //后续遍历是左右中  反过来是中右左  将前序遍历调整一哈即可
+    public static List<Integer> postorderTraversalRecursive(TreeNode root){
+        List<Integer> res = new ArrayList<>();
+        if (root == null){
+            return res;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while(!stack.isEmpty()){
+            TreeNode curr = stack.pop();
+            res.add(curr.val);
+            if (curr.left != null) stack.push(curr.left);
+            if (curr.right != null) stack.push(curr.right);
+        }
+        Collections.reverse(res);
+        System.out.println("后续遍历二叉树—迭代法" + res);
         return res;
     }
 }
