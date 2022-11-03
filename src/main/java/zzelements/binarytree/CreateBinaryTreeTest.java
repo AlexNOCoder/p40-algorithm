@@ -32,6 +32,10 @@ public class CreateBinaryTreeTest {
         //后续遍历 迭代
         Order.postorderTraversalRecursive(binaryTree.getRoot());
 
+        //层序遍历 队列
         Order.levelOrder(binaryTree.getRoot());
+
+        //判断对称二叉树 递归
+        Attribute.isSymmetric(binaryTree.getRoot());
     }
 }
