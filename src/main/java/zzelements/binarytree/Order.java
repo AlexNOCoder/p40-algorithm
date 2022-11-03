@@ -1,9 +1,6 @@
 package zzelements.binarytree;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @program: p40-algorithm
@@ -111,6 +108,38 @@ public class Order {
         }
         Collections.reverse(res);
         System.out.println("后续遍历二叉树—迭代法" + res);
+        return res;
+    }
+
+    //二叉树层序遍历 递归
+    public static List<List<Integer>> levelOrder(TreeNode root){
+        //构建一个数据结构 队列 先进先出
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if (root == null){return res;}
+        //根节点入队
+        queue.add(root);
+        while (!queue.isEmpty()){
+            //一层的结果
+            List<Integer> level = new ArrayList<Integer>();
+            int levelCount = queue.size();
+            //添加节点到一层的结果中去
+            for (int i = 0; i < levelCount; i ++){
+                //节点出队
+                TreeNode node = queue.remove();
+                //节点的左子树入队
+                if (node.left != null){
+                    queue.add(node.left);
+                }
+                //节点的右子树入队
+                if (node.right != null){
+                    queue.add(node.right);
+                }
+                level.add(node.val);
+            }
+            res.add(level);
+        }
+        System.out.println("层序遍历二叉树" + res);
         return res;
     }
 }
