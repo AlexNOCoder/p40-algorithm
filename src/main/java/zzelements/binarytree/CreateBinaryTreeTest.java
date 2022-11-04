@@ -42,5 +42,8 @@ public class CreateBinaryTreeTest {
 
         //判断对称二叉树 迭代 普通队列
         Attribute.isSymmetrixRecursive(binaryTree.getRoot());
+
+        //
+        Attribute.isSymmetrixRecursive2(binaryTree.getRoot());
     }
 }

@@ -1,5 +1,6 @@
 package zzelements.binarytree;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -47,6 +48,26 @@ public class Attribute {
             deque.offer(rightNode.left);
         }
         System.out.println("判断对称二叉树 迭代 普通队列"+true);
+        return true;
+    }
+
+    //对称二叉树 迭代
+    //使用双端队列，相当于两个栈。
+    public static boolean isSymmetrixRecursive2(TreeNode root){
+        Deque<TreeNode> deque = new LinkedList<>();
+        deque.offerFirst(root.left);
+        deque.offerLast(root.right);
+        while(!deque.isEmpty()){
+            TreeNode leftNode = deque.pollFirst();
+            TreeNode rightNode = deque.pollLast();
+            if (leftNode == null && rightNode == null){continue;}
+            if (leftNode == null || rightNode == null || leftNode.val != rightNode.val){System.out.println("判断对称二叉树 迭代 双端队列"+false);;return false;}
+            deque.offerFirst(leftNode.left);
+            deque.offerFirst(leftNode.right);
+            deque.offerLast(rightNode.right);
+            deque.offerLast(rightNode.left);
+        }
+        System.out.println("判断对称二叉树 迭代 双端队列"+true);
         return true;
     }
 }
