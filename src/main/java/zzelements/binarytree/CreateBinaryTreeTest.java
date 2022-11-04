@@ -12,14 +12,16 @@ public class CreateBinaryTreeTest {
         //递归建树数据
         Integer[] data = {1,2,3,null,null,null,3,null,null};
         //层序建立二叉树数据
-        Integer[] data1 = {1,2,3,null,null,null,null};
+        Integer[] data1 = {1,2,3,3,4,4,3};
         //建立递归二叉树
-        TestOneBinaryTree(data);
+        TestOneBinaryTree(data1);
 
     }
 
-    public static void TestOneBinaryTree(Integer[] data){
-        BinaryTree binaryTree = new BinaryTree(data);
+    public static void TestOneBinaryTree(Integer[] data1){
+//        BinaryTree binaryTree = new BinaryTree(data1);
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.SequenceCreateBinaryTree(data1);
         //前序遍历 递归
         Order.preOrderTraversal(binaryTree.getRoot());
 
@@ -37,5 +39,8 @@ public class CreateBinaryTreeTest {
 
         //判断对称二叉树 递归
         Attribute.isSymmetric(binaryTree.getRoot());
+
+        //判断对称二叉树 迭代 普通队列
+        Attribute.isSymmetrixRecursive(binaryTree.getRoot());
     }
 }

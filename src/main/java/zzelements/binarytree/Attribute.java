@@ -1,5 +1,8 @@
 package zzelements.binarytree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @program: p40-algorithm
  * @description: 二叉树的属性
@@ -11,7 +14,7 @@ public class Attribute {
     //判断二叉树是否对称 递归
     public static boolean isSymmetric(TreeNode root){
         boolean b = check(root, root);
-        System.out.println(b);
+        System.out.println("判断对称二叉树 递归" + b);
         return b;
     }
 
@@ -25,7 +28,25 @@ public class Attribute {
 
     //对称二叉树 迭代
     //引入一个队列，这是把递归程序改写为迭代程序的常用方法。
-    public static boolean isSymmetrixRecursive(){
+    //使用普通队列
+    public static boolean isSymmetrixRecursive(TreeNode root){
+        Queue<TreeNode> deque = new LinkedList<>();
+        deque.offer(root.left);
+        deque.offer(root.right);
+        while (!deque.isEmpty()){
+            TreeNode leftNode = deque.poll();
+            TreeNode rightNode = deque.poll();
+            if (leftNode == null && rightNode == null){continue;}
+            if (leftNode == null || rightNode == null || leftNode.val != rightNode.val){
+                System.out.println("判断对称二叉树 迭代 普通队列"+false);
+                return false;
+            }
+            deque.offer(leftNode.left);
+            deque.offer(rightNode.right);
+            deque.offer(leftNode.right);
+            deque.offer(rightNode.left);
+        }
+        System.out.println("判断对称二叉树 迭代 普通队列"+true);
         return true;
     }
 }
