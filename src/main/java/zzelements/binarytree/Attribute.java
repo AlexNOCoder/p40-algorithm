@@ -85,4 +85,21 @@ public class Attribute {
         int high = leftHigh > rightHigh ? leftHigh : rightHigh;  //中
         return high + 1;
     }
+
+    //二叉树最小深度
+    public static int minDepth(TreeNode root){
+        int i = getMinHigh(root);
+        System.out.println("二叉树最小深度："+i);
+        return i;
+    }
+    //使用后续遍历 左右中的顺序
+    public static int getMinHigh(TreeNode node){
+        if (node == null){return 0;}
+        int leftHigh = getMinHigh(node.left);
+        int rightHigh = getMinHigh(node.right);
+        if (node.left == null && node.right != null){return 1 + rightHigh;}
+        if (node.right == null && node.left != null){return 1 + leftHigh;}
+        int result = 1 + (leftHigh < rightHigh ? leftHigh : rightHigh);
+        return result;
+    }
 }

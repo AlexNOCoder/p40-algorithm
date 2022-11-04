@@ -48,5 +48,8 @@ public class CreateBinaryTreeTest {
 
         //二叉树最大深度
         Attribute.maxDepth(binaryTree.getRoot());
+
+        //二叉树最小深度
+        Attribute.minDepth(binaryTree.getRoot());
     }
 }
