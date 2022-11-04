@@ -70,4 +70,19 @@ public class Attribute {
         System.out.println("判断对称二叉树 迭代 双端队列"+true);
         return true;
     }
+
+    //二叉树最大深度
+    public static int maxDepth(TreeNode root){
+        int i = getHigh(root);
+        System.out.println("二叉树的最大深度："+ i);
+        return i;
+    }
+    //使用了后续遍历 左右中的顺序
+    public static int getHigh(TreeNode node){
+        if (node == null){return 0;}
+        int leftHigh = getHigh(node.left); //左
+        int rightHigh = getHigh(node.right);  //右
+        int high = leftHigh > rightHigh ? leftHigh : rightHigh;  //中
+        return high + 1;
+    }
 }

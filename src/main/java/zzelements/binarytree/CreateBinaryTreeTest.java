@@ -43,7 +43,10 @@ public class CreateBinaryTreeTest {
         //判断对称二叉树 迭代 普通队列
         Attribute.isSymmetrixRecursive(binaryTree.getRoot());
 
-        //
+        //判断对称二叉树 迭代 两端队列
         Attribute.isSymmetrixRecursive2(binaryTree.getRoot());
+
+        //二叉树最大深度
+        Attribute.maxDepth(binaryTree.getRoot());
     }
 }
