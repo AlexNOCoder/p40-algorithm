@@ -125,7 +125,7 @@ public class Attribute {
     //完全二叉树节点数（满二叉树性质递归）
     public static int countNodeAttribute(TreeNode root){
         int result =getNumAttribute(root);
-        System.out.println("完全二叉树的节点数量（满二叉树的性质）：" + result);
+        System.out.println("完全二叉树的节点数量（满二叉树的性质  ）：" + result);
         return result;
     }
 
@@ -147,6 +147,26 @@ public class Attribute {
         leftDepth = getNumAttribute(node.left);
         rightDepth = getNumAttribute(node.right);
         int result = leftDepth + rightDepth +1;
+        return result;
+    }
+
+    //平衡二叉树
+    public static boolean isBalanced(TreeNode root){
+        int result = gethigh(root);
+        System.out.println("数字结果" + result);
+        if (result == -1){return false;}else {return true;}
+    }
+
+    //求高度用后续遍历-左右中-从底层向上递归
+    public static int gethigh(TreeNode node){
+        if (node == null){return 0;}
+        int leftHeigh = getHigh(node.left);//左
+        if (leftHeigh == -1){return -1;}
+        int rightHeigh = getHigh(node.right);//右
+        if (rightHeigh == -1){return -1;}
+        int result;
+        if (Math.abs(rightHeigh - leftHeigh) > 1){result = -1;}//中
+        else {result = 1 + rightHeigh > leftHeigh ? rightHeigh : leftHeigh;}
         return result;
     }
 }

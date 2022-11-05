@@ -57,5 +57,8 @@ public class CreateBinaryTreeTest {
 
         //完全二叉树的节点数（使用满二叉树的性质的递归+本质是后续遍历）
         Attribute.countNodeAttribute(binaryTree.getRoot());
+
+        //判断平衡二叉树
+        Attribute.isBalanced(binaryTree.getRoot());
     }
 }
