@@ -181,7 +181,7 @@ public class Attribute {
         if (root == null){return result;}
         traversal(root, path, result);
         System.out.println("二叉树所有路径：" + result);
-        return result;
+         return result;
 
     }
 
@@ -208,5 +208,24 @@ public class Attribute {
             traversal(cur.right, path, result);
             path.remove(path.size() - 1);//回溯
         }
+    }
+
+    /**
+     * 求二叉树左叶子之和
+     */
+    public static int sumOfLeftLeaves(TreeNode root){
+        int result = sumOfleft(root);
+        System.out.println("二叉树左子树之和：" + result);
+        return result;
+    }
+
+    public static int sumOfleft(TreeNode node){
+        if (node == null)return 0;
+        if (node.left == null && node.right == null)return 0;
+        int leftNum = sumOfleft(node.left);
+        if (node.left != null && node.left.left == null && node.left.right == null){leftNum = node.left.val;}
+        int rightNum = sumOfleft(node.right);
+        int sum = leftNum + rightNum;
+        return sum;
     }
 }

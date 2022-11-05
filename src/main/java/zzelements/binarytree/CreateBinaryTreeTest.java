@@ -63,5 +63,8 @@ public class CreateBinaryTreeTest {
 
         //求二叉树所有路径
         Attribute.binaryTreePaths(binaryTree.getRoot());
+
+        //二叉树左子树之和
+        Attribute.sumOfLeftLeaves(binaryTree.getRoot());
     }
 }
