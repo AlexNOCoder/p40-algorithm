@@ -103,7 +103,7 @@ public class Attribute {
         return result;
     }
 
-    //完全二叉树的节点数
+    //完全二叉树的节点数（普通递归）
     public static int countNode(TreeNode root){
         int result = getNum(root);
         System.out.println("完全二叉树的节点数：" + result);
@@ -119,6 +119,34 @@ public class Attribute {
         int rightNum = getNum(node.right);  //右
         int result = leftNum + rightNum + 1; //中
 
+        return result;
+    }
+
+    //完全二叉树节点数（满二叉树性质递归）
+    public static int countNodeAttribute(TreeNode root){
+        int result =getNumAttribute(root);
+        System.out.println("完全二叉树的节点数量（满二叉树的性质）：" + result);
+        return result;
+    }
+
+    public static int getNumAttribute(TreeNode node){
+        if (node == null){return 0;}
+        TreeNode left = node.left;
+        TreeNode right = node.right;
+        int leftDepth = 0;
+        int rightDepth = 0;
+        while (left != null){
+            left = left.left;
+            leftDepth ++;
+        }
+        while (right != null){
+            right = right.right;
+            rightDepth ++;
+        }
+        if (leftDepth == rightDepth){return (2<<leftDepth) - 1; }
+        leftDepth = getNumAttribute(node.left);
+        rightDepth = getNumAttribute(node.right);
+        int result = leftDepth + rightDepth +1;
         return result;
     }
 }
