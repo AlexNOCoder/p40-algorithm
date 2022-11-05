@@ -51,5 +51,8 @@ public class CreateBinaryTreeTest {
 
         //二叉树最小深度
         Attribute.minDepth(binaryTree.getRoot());
+
+        //完全二叉树的节点数
+        Attribute.countNode(binaryTree.getRoot());
     }
 }

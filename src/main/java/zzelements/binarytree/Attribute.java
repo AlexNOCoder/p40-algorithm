@@ -102,4 +102,23 @@ public class Attribute {
         int result = 1 + (leftHigh < rightHigh ? leftHigh : rightHigh);
         return result;
     }
+
+    //完全二叉树的节点数
+    public static int countNode(TreeNode root){
+        int result = getNum(root);
+        System.out.println("完全二叉树的节点数：" + result);
+        return result;
+    }
+
+    //完全二叉树的性质：1.除了最后一排，都是满的。2.最后一排从左往右排列。
+    //获取层数：一直向左遍历
+    //递归法处理，使用了后续遍历，如果使用精简的写法则不能看出里面的逻辑。
+    public static int getNum(TreeNode node){
+        if (node == null){return 0;}
+        int leftNum = getNum(node.left);  //左
+        int rightNum = getNum(node.right);  //右
+        int result = leftNum + rightNum + 1; //中
+
+        return result;
+    }
 }
