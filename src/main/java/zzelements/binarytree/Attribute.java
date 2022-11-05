@@ -1,8 +1,6 @@
 package zzelements.binarytree;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @program: p40-algorithm
@@ -150,7 +148,11 @@ public class Attribute {
         return result;
     }
 
-    //平衡二叉树
+    /**
+     * 平衡二叉树
+     * @param root
+     * @return
+     */
     public static boolean isBalanced(TreeNode root){
         int result = gethigh(root);
         System.out.println("数字结果" + result);
@@ -168,5 +170,43 @@ public class Attribute {
         if (Math.abs(rightHeigh - leftHeigh) > 1){result = -1;}//中
         else {result = 1 + rightHeigh > leftHeigh ? rightHeigh : leftHeigh;}
         return result;
+    }
+
+    /**
+     * 二叉树所有路径
+     */
+    public static List<String> binaryTreePaths(TreeNode root){
+        List<String> result = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        if (root == null){return result;}
+        traversal(root, path, result);
+        System.out.println("二叉树所有路径：" + result);
+        return result;
+
+    }
+
+    //本题要求从根节点到叶子节点的路径，所以需要前序遍历。需要使用回溯来记录路径。
+    public static void traversal(TreeNode cur, List<Integer> path, List<String> result){
+        path.add(cur.val);
+        //递归到叶子节点，这里会将一条路径上的节点都加入path路径。
+        //中
+        if (cur.left == null && cur.right == null){
+            String sPath = "";
+            for (int i = 0; i < path.size() - 1; i ++){
+                sPath += Integer.toString(path.get(i));
+                sPath += "->";
+            }
+            sPath += path.get(path.size() - 1);
+            result.add(sPath);
+            return;
+        }
+        if (cur.left != null){
+            traversal(cur.left, path, result);
+            path.remove(path.size() - 1);//回溯
+        }
+        if (cur.right != null){
+            traversal(cur.right, path, result);
+            path.remove(path.size() - 1);//回溯
+        }
     }
 }

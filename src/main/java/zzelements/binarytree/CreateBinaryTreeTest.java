@@ -60,5 +60,8 @@ public class CreateBinaryTreeTest {
 
         //判断平衡二叉树
         Attribute.isBalanced(binaryTree.getRoot());
+
+        //求二叉树所有路径
+        Attribute.binaryTreePaths(binaryTree.getRoot());
     }
 }
