@@ -1,5 +1,7 @@
 package zzelements.binarytree;
 
+import org.checkerframework.checker.units.qual.A;
+
 /**
  * @program: p40-algorithm
  * @description: 创建二叉树测试
@@ -69,5 +71,8 @@ public class CreateBinaryTreeTest {
 
         //找树左下角的值
         Attribute.findBottomLeftValue(binaryTree.getRoot());
+
+        //路径和
+        Attribute.hasPathSumm(binaryTree.getRoot(), 6);
     }
 }

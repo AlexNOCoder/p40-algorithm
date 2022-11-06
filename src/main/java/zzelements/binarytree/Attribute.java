@@ -253,4 +253,31 @@ public class Attribute {
         if (node.left != null) findValue(node.left, deep + 1);//隐藏回溯
         if (node.right != null)findValue(node.right, deep + 1);//隐藏回溯
     }
+
+    /**
+     *  路径总和
+     */
+    public static boolean hasPathSumm(TreeNode root, int sum){
+        if (root == null) return false;
+        sum -= root.val;
+        boolean result = hasPathSum(root, sum);
+        System.out.println("路径总和112：" + result);
+        return result;
+    }
+
+    public static boolean hasPathSum(TreeNode root, int targetSum){
+        if (root.left == null && root.right == null && targetSum == 0){return true;}
+        if (root.left == null && root.right == null && targetSum != 0){return false;}
+        if (root.left != null){
+            targetSum -= root.left.val;
+            if (hasPathSum(root.left, targetSum))return true;
+            targetSum += root.left.val;
+        }
+        if (root.right != null){
+            targetSum -= root.right.val;
+            if (hasPathSum(root.right, targetSum))return true;
+            targetSum += root.right.val;
+        }
+        return false;
+    }
 }
