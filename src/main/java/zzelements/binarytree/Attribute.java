@@ -228,4 +228,29 @@ public class Attribute {
         int sum = leftNum + rightNum;
         return sum;
     }
+
+    /**
+     * 找树左下脚的值
+     */
+    public static int Deep = -1;
+    public static int value = 0;
+    public static int findBottomLeftValue(TreeNode root){
+        value = root.val;
+        findValue(root, 0);
+        System.out.println("树左下角的值：" + value);
+        return value;
+    }
+
+    public static void findValue(TreeNode node, int deep){
+        if (node == null){return;}
+        //找到叶子节点
+        if (node.left == null && node.right == null){
+            if (deep > Deep){
+                value = node.val;
+                Deep = deep;
+            }
+        }
+        if (node.left != null) findValue(node.left, deep + 1);//隐藏回溯
+        if (node.right != null)findValue(node.right, deep + 1);//隐藏回溯
+    }
 }

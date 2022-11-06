@@ -66,5 +66,8 @@ public class CreateBinaryTreeTest {
 
         //二叉树左子树之和
         Attribute.sumOfLeftLeaves(binaryTree.getRoot());
+
+        //找树左下角的值
+        Attribute.findBottomLeftValue(binaryTree.getRoot());
     }
 }
