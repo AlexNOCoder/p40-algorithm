@@ -12,14 +12,20 @@ public class CreateArrayTest {
 
         //新建数组
         int[] nums = {-1,0,3,5,9,12};
-        testArray(nums);
+
+        //二分搜索
+        Search.binarySearch(nums, 9);
+
+        //删除元素
+        int[] nums1 = {0,1,2,3,3,0,4,2};
+        Search.removeElement(nums1, 2);
+//        testArray(nums);
 
     }
 
     //测试
     public static void testArray(int[] nums){
 
-        //二分搜索
-        Search.binarySearch(nums, 9);
+
     }
 }
