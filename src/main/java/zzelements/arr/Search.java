@@ -54,4 +54,24 @@ public class Search {
         System.out.println("删除元素：" + slow);
         return slow;
     }
+
+
+    /**
+     * 有序数组的平方
+     */
+    public static int[] sortedSqueues(int[] nums){
+        int[] result = new int[nums.length];
+        int k = nums.length - 1;
+        for (int i = 0,j = nums.length - 1; i <= j;){
+            if (nums[i]*nums[i] > nums[j]*nums[j]){
+                result[k--] = nums[i]*nums[i];
+                i ++;
+            }else{
+                result[k--] = nums[j]*nums[j];
+                j --;
+            }
+        }
+        System.out.println("有序数组的平方：" + result);
+        return result;
+    }
 }

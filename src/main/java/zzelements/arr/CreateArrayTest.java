@@ -19,7 +19,10 @@ public class CreateArrayTest {
         //删除元素
         int[] nums1 = {0,1,2,3,3,0,4,2};
         Search.removeElement(nums1, 2);
-//        testArray(nums);
+
+        //有序数组的平方
+        int[] nums2 = {-4,-1,0,3,10};
+        Search.sortedSqueues(nums2);
 
     }
 
