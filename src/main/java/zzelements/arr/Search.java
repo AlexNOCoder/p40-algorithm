@@ -74,4 +74,32 @@ public class Search {
         System.out.println("有序数组的平方：" + result);
         return result;
     }
+
+    /**
+     * 长度最小的子数组209
+     * 使用滑动窗口算法，所谓滑动窗口，就是不断的调节子序列的起始位置和终止位置，从而得出我们想要的结果。
+     * 如果只用一个for循环那么应该表示滑动窗口的起始位置
+     * 使用滑动窗口主要确定三点：
+     * 1.窗口内是上面？   ---就是其 >=s 的长度最小的子数组。
+     * 2.如何移动窗口的起始位置？    ---如果当前窗口的值大于s，就向前移动，就是缩小窗口。
+     * 3.如何移动窗口的结束位置？    ---窗口的结束位置就是遍历数组的指针，也就是for循环里面的索引。
+     * @param target
+     * @param nums
+     * @return
+     */
+     public static int minSubArrayLen(int target, int[] nums){
+         int left = 0;//滑动窗口起始位置
+         int sum = 0;//滑动窗口数值之和
+         int result = Integer.MAX_VALUE;//滑动窗口长度
+         for (int right = 0; right < nums.length; right  ++){//right是滑动窗口的结束位置
+             sum += nums[right];
+             while(sum >= target){//这里使用while，每次更新left（起始位置），并不断比较子序列是否符合条件。
+                 result = Math.min(result, right - left + 1);//right-left+1是指子序列的长度
+                 sum -= nums[left ++];//不断变更left，子序列的起始位置。
+             }
+         }
+         result = result == Integer.MAX_VALUE ? 0 : result;//如果result没有被赋值，就返回0.
+         System.out.println("长度最小的子数组：" + result);
+         return result;
+     }
 }

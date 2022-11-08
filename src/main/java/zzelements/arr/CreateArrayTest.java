@@ -24,6 +24,10 @@ public class CreateArrayTest {
         int[] nums2 = {-4,-1,0,3,10};
         Search.sortedSqueues(nums2);
 
+        //长度最小的子数组
+        int[] nums3 = {2,3,1,2,4,3};
+        Search.minSubArrayLen(7, nums3);
+
     }
 
     //测试
