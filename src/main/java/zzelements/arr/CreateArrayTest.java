@@ -33,7 +33,10 @@ public class CreateArrayTest {
 
         //搜索插入位置 暴力解法
         int[] nums4 = {1,3,5,6};
-        Search.searchInsert(nums, 5);
+        Search.searchInsert(nums4, 5);
+
+        //搜索插入位置 二分法
+        Search.searchInsertTow(nums4, 0);
 
     }
 

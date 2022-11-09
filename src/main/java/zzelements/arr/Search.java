@@ -158,7 +158,6 @@ public class Search {
      */
     public static int searchInsert(int[] nums, int target){
         //暴力解法，遍历一次，时间复杂度O(N)
-        //
         for (int i = 0; i < nums.length; i ++){
             if (nums[i] >= target){
                 System.out.println("搜索插入位置：" + i);
@@ -167,5 +166,27 @@ public class Search {
         }
         System.out.println("搜索插入位置：" + nums.length);
         return nums.length;
+    }
+
+    //搜索插入位置 二分法
+    public static int searchInsertTow(int[] nums, int target){
+        int n = nums.length;
+
+        int low = 0;
+        int high = n -1;
+
+        while (low <= high){
+            int mid = low + (high - low)/2;
+            if (nums[mid] > target){
+                high = mid - 1;
+            }else if (nums[mid] < target){
+                low = mid + 1;
+            }else {
+                System.out.println("搜索插入位置：" + mid);
+                return mid;
+            }
+        }
+        System.out.println("搜索插入位置：" + (high + 1));
+        return high + 1;
     }
 }
