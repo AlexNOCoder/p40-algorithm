@@ -28,6 +28,9 @@ public class CreateArrayTest {
         int[] nums3 = {2,3,1,2,4,3};
         Search.minSubArrayLen(7, nums3);
 
+        //螺旋矩阵
+        Search.generateMatrix(3);
+
     }
 
     //测试

@@ -102,4 +102,49 @@ public class Search {
          System.out.println("长度最小的子数组：" + result);
          return result;
      }
+
+    /**
+     *螺旋矩阵
+     *
+     * @param n
+     * @return
+     */
+     public static int[][] generateMatrix(int n){
+         int loop = 0; //控制循环次数
+         int[][] res = new int[n][n];//定义一个二维数组
+         int start = 0; //每次循环的开始点（start,start）
+         int count = 1; //定义填充数字
+         int i,j;
+
+         while(loop ++ < n/2){
+             //模拟上侧从左到右
+             for (j = start; j < n - loop; j ++){
+                 res[start][j] = count ++;
+             }
+             //模拟右侧从上到下
+             for (i = start; i < n - loop; i ++){
+                 res[i][j] = count ++;
+             }
+             //模拟下侧从右到左
+             for (;j >= loop; j--){
+                 res[i][j] = count ++;
+             }
+             //模拟左侧从下到上
+             for (;i >= loop; i --){
+                 res[i][j] = count ++;
+             }
+             start ++;
+         }
+         if (n % 2 == 1){
+             res[start][start] = count;
+         }
+         System.out.println("螺旋矩阵: ");
+         for (int x = 0; x < res.length; x ++){
+             for (int y = 0; y < res[x].length; y ++){
+                 System.out.print(res[x][y]+"  ");
+             }
+             System.out.println();
+         }
+         return res;
+     }
 }
