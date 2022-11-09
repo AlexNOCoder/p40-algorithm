@@ -31,6 +31,10 @@ public class CreateArrayTest {
         //螺旋矩阵
         Search.generateMatrix(3);
 
+        //搜索插入位置 暴力解法
+        int[] nums4 = {1,3,5,6};
+        Search.searchInsert(nums, 5);
+
     }
 
     //测试

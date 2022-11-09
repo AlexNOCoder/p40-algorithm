@@ -12,7 +12,7 @@ public class Search {
      * 二分查找法
      * 二分查找法是一种在有序数组中查找某一特定元素的搜素算法。从数组的中间元素开始，每次比较都使搜索范围缩小一半。
      * 第一步分清楚区间，闭还是开，开还是闭。
-     * 根据区间的定义来判断边界。
+     * 根据区间的定义来判断边界。循环不变量，
      * @param nums
      * @param target
      * @return
@@ -147,4 +147,25 @@ public class Search {
          }
          return res;
      }
+
+    /**
+     *搜索插入位置35
+     * 以下四种情况：
+     * 1.目标值在数组所有元素之前
+     * 2.目标值等于数组中的某一个元素
+     * 3.目标值插入数组中的位置
+     * 4.目标值在所有元素之后
+     */
+    public static int searchInsert(int[] nums, int target){
+        //暴力解法，遍历一次，时间复杂度O(N)
+        //
+        for (int i = 0; i < nums.length; i ++){
+            if (nums[i] >= target){
+                System.out.println("搜索插入位置：" + i);
+                return i;
+            }
+        }
+        System.out.println("搜索插入位置：" + nums.length);
+        return nums.length;
+    }
 }
