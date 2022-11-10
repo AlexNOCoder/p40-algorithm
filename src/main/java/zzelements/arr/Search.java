@@ -189,4 +189,67 @@ public class Search {
         System.out.println("搜索插入位置：" + (high + 1));
         return high + 1;
     }
+
+    //在排序数组中查找元素的第一个和最后一个位置
+    /**
+     * 左右边界，有如下三种情况：
+     * 1.target在数组范围的左边或者右边，例如数组{3，4，5}，target为2或者6。此时返回{-1，-1}
+     * 2.target在数组范围中，例如{3，6，7}，target为5，此时返回{-1，-1}
+     * 3.target在数组范围中，且数组中存在target，如{3，6，7}，target为6，返回{1，1}
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] searchRange(int[] nums,int target){
+        int leftBorder = getLeftBorder(nums,target);
+        int rightBorder = getRightBorder(nums,target);
+        //情况一
+        if (leftBorder == -2 || rightBorder == -2) {
+            System.out.println("情况一:" + "{-1, -1}");
+            return new int[]{-1,-1};
+        }
+        //情况三
+        if (rightBorder - leftBorder > 1){
+            System.out.println("情况三:" + (leftBorder + 1) +","+ (rightBorder - 1));
+            return new int[]{leftBorder + 1, rightBorder - 1};}
+        //情况二
+        System.out.println("情况二:" + "{-1, -1}");
+        return new int[]{-1, -1};
+    }
+
+    static int getRightBorder(int[] nums, int target){
+        int left = 0;
+        int right = nums.length -1;//定义左右边界[left,right]
+        int rightBorder = -2;//记录一哈rightBorder没有赋值的情况
+        while(left <= right){
+            int middle = left + (right - left)/2;
+            if (nums[middle] > target){
+                right = middle - 1;
+            }else {
+                left = middle + 1;
+                rightBorder = left;
+            }
+        }
+        return rightBorder;
+    }
+
+    static int getLeftBorder(int[] nums, int target){
+        int left = 0;
+        int right = nums.length - 1;
+        int leftBorder = -2;
+        while (left <= right){
+            int middle = left + (right - left)/2;
+            if (nums[middle] >= target){
+                right = middle - 1;
+                leftBorder = right;
+            }else {
+                left = middle + 1;
+            }
+        }
+        return leftBorder;
+    }
+
+    //
+
+    //
 }

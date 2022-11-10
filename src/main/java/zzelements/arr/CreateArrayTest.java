@@ -38,6 +38,10 @@ public class CreateArrayTest {
         //搜索插入位置 二分法
         Search.searchInsertTow(nums4, 0);
 
+        //在排序数组中查找元素的第一个和最后一个位置
+        int[] nums5 = {5,7,7,8,8,8,10};
+        Search.searchRange(nums5, 8);
+
     }
 
     //测试
