@@ -42,6 +42,9 @@ public class CreateArrayTest {
         int[] nums5 = {5,7,7,8,8,8,10};
         Search.searchRange(nums5, 8);
 
+        //X的平方根
+        Search.mySqrt(8);
+
     }
 
     //测试
