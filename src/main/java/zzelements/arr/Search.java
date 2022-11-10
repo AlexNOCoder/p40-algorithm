@@ -266,5 +266,22 @@ public class Search {
         return ans;
     }
 
-    //
+    //有效的完全平方根
+    public static boolean isPerfectSquare(int num){
+        int left = 0, right = num;
+        while (left <= right){
+            int mid = left + (right - left)/2;
+            long square = (long)mid*mid;
+            if (square < num){
+                left = mid + 1;
+            }else if (square > num){
+                right = mid - 1;
+            }else {
+                System.out.println("有效的完全平方根: " + true);
+                return true;
+            }
+        }
+        System.out.println("有效的完全平方根: " + false);
+        return false;
+    }
 }

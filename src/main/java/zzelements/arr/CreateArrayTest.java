@@ -45,6 +45,9 @@ public class CreateArrayTest {
         //X的平方根
         Search.mySqrt(8);
 
+        //有效的完全平方根
+        Search.isPerfectSquare(8);
+
     }
 
     //测试
