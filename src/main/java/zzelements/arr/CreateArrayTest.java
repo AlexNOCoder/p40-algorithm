@@ -52,6 +52,10 @@ public class CreateArrayTest {
         int[] nums6 = {0,0,1,1,1,2,2,3,3,4};
         Search.removeDuplicates(nums6);
 
+        //零移动
+        int[] nums7 = {0,1,0,3,12};
+        Search.mozeZeros(nums7);
+
     }
 
     //测试

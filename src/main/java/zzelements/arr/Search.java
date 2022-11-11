@@ -301,4 +301,22 @@ public class Search {
         System.out.println("删除有序数组中的重复项:"+ (i + 1));
         return j + 1;
     }
+
+    //零移动
+    public static void mozeZeros(int[] nums){
+        int i = 0;
+        for (int j = 0; j < nums.length; j ++){
+            if (nums[j] != 0){
+                nums[i ++] = nums[j];
+            }
+        }
+        //后面的元素赋值为0
+        for (int k = i; i < nums.length; i ++){
+            nums[i] = 0;
+        }
+        System.out.print("零移动");
+        for (int y = 0; y < nums.length; y ++){
+            System.out.print("--" + nums[y]);
+        }
+    }
 }
