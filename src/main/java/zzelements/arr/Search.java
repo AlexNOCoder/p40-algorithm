@@ -284,4 +284,21 @@ public class Search {
         System.out.println("有效的完全平方根: " + false);
         return false;
     }
+
+    //删除有序数组中的重复项
+    //设置左右指针，左指针指向新数组，被动向前，右指针遍历老数组，主动向前。相等时，新数组不动，不等时新数组加一并将值赋给新数组。最后返回新数组的长度。
+    public static int removeDuplicates(int[] nums){
+        if (nums == null || nums.length == 0){return 0;}
+        int i = 0;
+        int j = 1;
+        while (j < nums.length){
+            if (nums[i] != nums[j]){
+                nums[i + 1] = nums[j];
+                i ++;
+            }
+            j ++;
+        }
+        System.out.println("删除有序数组中的重复项:"+ (i + 1));
+        return j + 1;
+    }
 }

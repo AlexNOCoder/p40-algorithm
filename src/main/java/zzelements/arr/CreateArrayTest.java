@@ -48,6 +48,10 @@ public class CreateArrayTest {
         //有效的完全平方根
         Search.isPerfectSquare(8);
 
+        //删除有序数组中的重复项
+        int[] nums6 = {0,0,1,1,1,2,2,3,3,4};
+        Search.removeDuplicates(nums6);
+
     }
 
     //测试
