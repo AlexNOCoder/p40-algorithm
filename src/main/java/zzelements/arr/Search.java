@@ -1,5 +1,9 @@
 package zzelements.arr;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @program: p40-algorithm
  * @description: 查找
@@ -318,5 +322,46 @@ public class Search {
         for (int y = 0; y < nums.length; y ++){
             System.out.print("--" + nums[y]);
         }
+    }
+
+    //比较含退格的字符串844
+    //没搞懂，先跳过。
+    public static boolean backspaceCompare(String s, String t){
+        int sN = s.length(), tN = t.length();
+        int i = sN - 1, j = tN - 1;
+        int skipS = 0, skipT = 0;
+        while (i >=0 || j >= 0){
+            
+        }
+        return true;
+    }
+
+    //水果成蓝904
+    //可以理解为求只包含两种元素的最长连续子序列
+    //思路：使用滑动窗口遍历fruits，当有新种类的水果进入窗口时：
+    //1.如果窗口中只有一种水果，将这种水果加入arr数组。
+    //2.如果有两种水果，更新窗口的左边界，更新arr中水果的种类
+    //3.如果进来了一种新的类型的水果，更新前一种水果的位置
+    //4.更新滑动窗口的最大值
+    //总结：
+    public static int totalFruit(int[] furits){
+        if (furits.length ==0){return 0;}
+        Map<Integer, Integer> map = new HashMap<>();
+        int maxLen = 0;
+        int l = 0;
+        for (int r = 0; r < furits.length; r ++){//窗口的右指针不断前进
+            map.put(furits[r], map.getOrDefault(furits[r], 0) + 1);
+            while (map.size() > 2){
+                if (map.get(furits[l]) == 1){
+                    map.remove(furits[l]);
+                }else {
+                    map.put(furits[l], map.get(furits[l]) - 1);
+                }
+                l ++;
+            }
+            maxLen = Math.max(maxLen, r-l+1);//更新滑动窗口的最大值
+        }
+        System.out.println("水果成蓝:" + maxLen);
+        return maxLen;
     }
 }

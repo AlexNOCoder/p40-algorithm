@@ -56,11 +56,10 @@ public class CreateArrayTest {
         int[] nums7 = {0,1,0,3,12};
         Search.mozeZeros(nums7);
 
-    }
-
-    //测试
-    public static void testArray(int[] nums){
-
+        //水果成蓝904
+        int[] nums8 = {3,3,3,1,2,1,1,2,3,3,4};
+        Search.totalFruit(nums8);
 
     }
+
 }
