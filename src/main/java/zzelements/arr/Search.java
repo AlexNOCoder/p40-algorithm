@@ -2,6 +2,7 @@ package zzelements.arr;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -363,5 +364,64 @@ public class Search {
         }
         System.out.println("水果成蓝:" + maxLen);
         return maxLen;
+    }
+
+    //最小覆盖子串76
+    //子串强调“连续性”；T中可能包含重复元素
+    //在s上滑动窗口，通过移动r指针不断扩张窗口。当窗口包含t全部所需的字符后，如果能收缩，我们就收缩窗口直到得到最小窗口。
+    //如何判断当前窗口包含所有t所需的字符呢？可以用一个哈希表表示t中所有字符以及它们的个数，用一个哈希表动态维护窗口中所有的字符及个数，如果
+    //这个动态表中包含t的哈希表中的所有字符，并且对应的个数都不小于t的哈希表中各个字符的个数，那么当前窗口是可行的。
+    static Map<Character, Integer> ori = new HashMap<Character, Integer>();//t的哈希表（词频数组）
+    static Map<Character, Integer> cnt = new HashMap<Character, Integer>();//动态哈希表（种类和次数都需要覆盖）
+    public static String minWindow(String s, String t){
+        //统计字串词频
+        int tLen = t.length();
+        for (int i = 0; i < tLen; i ++){
+            char c = t.charAt(i);
+            ori.put(c, ori.getOrDefault(c, 0) + 1);
+        }
+        //设置左右指针
+        int l = 0, r = -1;
+        int len = Integer.MAX_VALUE, ansL = -1, ansR = -1;
+        int sLen = s.length();
+        //遍历整个长字符串
+        while (r < sLen){
+            ++ r;
+            //将符合条件的字符放入动态哈希表
+            //必须是字串中需要的字符，如果不是就不放进动态哈希表。
+            if (r < sLen && ori.containsKey(s.charAt(r))){
+                cnt.put(s.charAt(r), cnt.getOrDefault(s.charAt(r), 0) + 1);
+            }
+            //找到符合要求的字串就进入循环
+            while(check() && l <= r){
+                if (r-l+1 < len){
+                    len = r-l+1;
+                    ansL = l;
+                    ansR = l + len;
+                }
+                //逐渐删除前面的元素，缩小窗口
+                if (ori.containsKey(s.charAt(l))){
+                    cnt.put(s.charAt(l), cnt.getOrDefault(s.charAt(l), 0) -1);
+                }
+                ++l;
+            }
+        }
+
+        System.out.println("最小覆盖子串：" + (ansL ==-1?"":s.substring(ansL, ansR)));
+        return ansL ==-1?"":s.substring(ansL, ansR);
+    }
+
+    //判断动态哈希表中是否包含了子串的所有字符
+    public static boolean check(){
+        Iterator iter = ori.entrySet().iterator();
+        while (iter.hasNext()){
+            Map.Entry entry = (Map.Entry)iter.next();
+            Character key = (Character) entry.getKey();
+            Integer val = (Integer) entry.getValue();
+            if (cnt.getOrDefault(key, 0) < val){
+                return false;
+            }
+        }
+        return true;
     }
 }

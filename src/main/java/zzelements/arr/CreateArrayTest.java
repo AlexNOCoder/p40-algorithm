@@ -60,6 +60,10 @@ public class CreateArrayTest {
         int[] nums8 = {3,3,3,1,2,1,1,2,3,3,4};
         Search.totalFruit(nums8);
 
+        //最小覆盖子串
+        String s = "ADOBECODEBANC", t = "ABC";
+        Search.minWindow(s, t);
+
     }
 
 }
