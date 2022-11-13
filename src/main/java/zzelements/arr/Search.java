@@ -1,9 +1,6 @@
 package zzelements.arr;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @program: p40-algorithm
@@ -423,5 +420,41 @@ public class Search {
             }
         }
         return true;
+    }
+
+    //螺旋矩阵
+    public static List<Integer> spiralOrder(int[][] matrix){
+        List<Integer> arr = new ArrayList<>();
+        int left = 0,right = matrix[0].length - 1;
+        int top = 0,down = matrix.length - 1;
+
+        while (true){
+            for (int i = left; i <= right; ++i){
+                arr.add(matrix[top][i]);
+            }
+            top++;
+            if (top > down){break;}
+            for (int i = top; i <= down; ++i){
+                arr.add(matrix[i][right]);
+            }
+            right--;
+            if (left > right){break;}
+            for (int i = right; i >= left; --i){
+                arr.add(matrix[down][i]);
+            }
+            down--;
+            if (top>down){break;}
+            for (int i = down; i >= top; --i){
+                arr.add(matrix[i][left]);
+            }
+            left++;
+            if (left>right)break;
+        }
+        System.out.println("螺旋矩阵：");
+        for (int y = 0; y < arr.size(); y ++){
+            System.out.print("," + arr.get(y));
+        }
+
+        return arr;
     }
 }
