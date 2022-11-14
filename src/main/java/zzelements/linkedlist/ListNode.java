@@ -1,5 +1,7 @@
 package zzelements.linkedlist;
 
+import java.util.List;
+
 /**
  * @program: p40-algorithm
  * @description: 链表节点
@@ -12,8 +14,13 @@ public class ListNode {
 
     ListNode next;//指向下一个节点的指针
 
+    ListNode(){}
     ListNode(int x){
         this.val = x;
-        this.next = null;
     }
+    ListNode(int x, ListNode node){
+        this.next = node;
+        this.val = x;
+    }
+
 }
