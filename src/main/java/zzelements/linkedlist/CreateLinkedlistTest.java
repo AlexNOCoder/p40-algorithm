@@ -18,7 +18,8 @@ public class CreateLinkedlistTest {
         head.next = one;
         one.next = two;
         two.next = three;
-        Operate.removeElements(head, 6);
+//        Operate.removeElements(head, 6);
+        Operate.reverse(head);
 
     }
 }

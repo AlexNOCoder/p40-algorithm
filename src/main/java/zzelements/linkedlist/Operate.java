@@ -82,4 +82,23 @@ public class Operate {
         }
         pred.next = pred.next.next;
     }
+
+    //翻转链表 双指针
+    //首先定义一个cur指针指向头节点，pre指针指向null；用temp指针将cur.next保存
+    public static ListNode reverse(ListNode head){
+        ListNode temp;//保存cur的下一个节点
+        ListNode cur = head;
+        ListNode pre = null;
+        while (cur != null){
+            temp = cur.next;//保存cur的下一个节点
+            cur.next = pre;//翻转操作
+            //跟新cur和pre指针
+            pre = cur;
+            cur = temp;
+        }
+        System.out.println("翻转链表：" + pre);
+        return pre;
+    }
+    //
+    //
 }
