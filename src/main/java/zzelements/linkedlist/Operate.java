@@ -99,6 +99,18 @@ public class Operate {
         System.out.println("翻转链表：" + pre);
         return pre;
     }
-    //
+    //翻转链表递归，逻辑和双指针一样写法不一样。
+    public static ListNode reverseList(ListNode head){
+        return reverse(null, head);
+    }
+
+    public static ListNode reverse(ListNode pre, ListNode cur){
+        if (cur == null){return pre;}
+        ListNode temp = null;
+        temp = cur.next;//保存下一个节点
+        cur.next = pre;//翻转
+        //跟新pre，cur位置
+        return reverse(cur, temp);
+    }
     //
 }
