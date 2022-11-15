@@ -112,5 +112,23 @@ public class Operate {
         //跟新pre，cur位置
         return reverse(cur, temp);
     }
-    //
+
+    //两两交换链表中的节点
+    //本题关键是画图，并理清操作步骤。写对结束条件。
+    public static ListNode swapPairs(ListNode head){
+        ListNode dummyNode = new ListNode(0);
+        dummyNode.next = head;
+        ListNode pre = dummyNode;
+
+        while (pre.next != null && pre.next.next != null){
+            ListNode temp = head.next.next;
+            pre.next = head.next;
+            head.next.next = head;
+            head.next = temp;
+            pre = head;
+            head = head.next;
+        }
+        return dummyNode.next;
+    }
+
 }
