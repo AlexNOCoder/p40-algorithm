@@ -13,15 +13,16 @@ public class CreateLinkedlistTest {
         //移除链表元素
         ListNode head = new ListNode(1);
         ListNode one = new ListNode(2);
-        ListNode two = new ListNode(6);
-        ListNode three = new ListNode(3);
+        ListNode two = new ListNode(3);
+        ListNode three = new ListNode(4);
         head.next = one;
         one.next = two;
         two.next = three;
-        Operate.removeElements(head, 6);
-        Operate.reverse(head);
-        Operate.reverseList(head);
-        Operate.swapPairs(head);
+//        Operate.removeElements(head, 6);
+//        Operate.reverse(head);
+//        Operate.reverseList(head);
+//        Operate.swapPairs(head);
+        Operate.removeNthFromEnd(head, 2);
 
     }
 }
