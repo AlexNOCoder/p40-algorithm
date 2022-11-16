@@ -194,4 +194,26 @@ public class Operate {
         return null;
     }
 
+    //环形链表Ⅱ142
+    //1.判断是否有环。2如果有环，如何找到这个环的入口
+    public static ListNode detectCycle(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast){//有环
+                ListNode index1 = fast;
+                ListNode index2 = head;
+                //两个指针，从头节点和相遇节点走到相遇就是入口节点
+                while (index1 != index2){
+                    index1 = index1.next;
+                    index2 = index2.next;
+                }
+                return index1;
+            }
+        }
+        return null;
+    }
+
 }
