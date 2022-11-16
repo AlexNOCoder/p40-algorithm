@@ -152,4 +152,46 @@ public class Operate {
         return dummyNode.next;
     }
 
+    //链表相交
+    //求两个链表交点节点的指针，交点不是数字相等，而是指针相等。
+    public static ListNode getIntersectionNode(ListNode A, ListNode B){
+        ListNode curA = A;
+        ListNode curB = B;
+        int lenA = 0, lenB = 0;
+        while (curA != null){
+            lenA ++;
+            curA = curA.next;
+        }
+        while (curB != null){
+            lenB ++;
+            curB = curB.next;
+        }
+        curA = A;
+        curB = B;
+        //让curA为长链表的头，lenA为其长度
+        if (lenB > lenA){
+            //1.swap(lenA, lenB)
+            int tempLen = lenA;
+            lenA = lenB;
+            lenB = tempLen;
+            //2.swap(curA,curB)
+            ListNode tempNode = curA;
+            curA = curB;
+            curB = tempNode;
+        }
+        //求长度差
+        int gap = lenA - lenB;
+        //让curA和curB末尾位置对齐
+        while (gap -- > 0){
+            curA = curA.next;
+        }
+        //遍历遇到相同就返回
+        while (curA != null){
+            if (curA == curB){return curA;}
+            curA = curA.next;
+            curB = curB.next;
+        }
+        return null;
+    }
+
 }
